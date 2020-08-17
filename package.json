@@ -1,0 +1,25 @@
+{
+  "name": "virtualis-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "prebuild": "rm -rf .next",
+    "build": "next build",
+    "start": "next build && next start",
+    "export": "rm -rf .next && next build && next export",
+    "sync:s3": "AWS_DEFAULT_PROFILE=cezar-cli aws s3 sync out s3://virtualis.net",
+    "deploy": "npm run export && npm run sync:s3"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-less": "^1.0.1",
+    "less": "^3.12.2",
+    "next": "^9.5.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-transition-group": "^4.4.1"
+  }
+}
