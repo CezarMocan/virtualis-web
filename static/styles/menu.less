@@ -5,4 +5,28 @@
   z-index: 1;
   top: @menu-margin;
   left: @menu-margin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .menu-options-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+  }
+
+  .menu-list-button {
+    margin-right: 10px;
+  }
+
+  .menu-button {
+    border: 1px solid @color-light;
+    border-radius: 28px;
+    cursor: pointer;
+    padding: 10px 40px;
+    &:hover {
+      background-color: @color-light-transparent;
+    }
+    transition: background-color 0.25s ease-in-out;
+  }
 }
