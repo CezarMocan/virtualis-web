@@ -27,8 +27,8 @@ class Main extends React.Component {
     let badUrl = (Object.values(NAV).indexOf(lUrl) == -1)
     return (
       <div className="app-container">
-        <Menu/>
         <Background/>
+        <Menu/>
         { lUrl == NAV.ABOUT && <About/>}
         { lUrl == NAV.BOOK && <Book/>}
         { lUrl == NAV.FAQ && <FAQ/>}
