@@ -1,6 +1,7 @@
 import React from 'react'
 import Style from '../static/styles/main.less'
 import { withPageRouter } from '../modules/withPageRouter'
+import MainContextProvider from '../context/MainContext'
 import Head from '../components/Head'
 import Main from '../components/Main'
 
