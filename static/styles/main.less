@@ -10,6 +10,10 @@ body {
   //overflow: hidden;
 }
 
+a {
+  color: @color-light;
+}
+
 .app-container {
   padding: @app-padding;
   max-width: 100vw;
@@ -19,10 +23,10 @@ body {
   position: relative;
   border: 1px solid white;
   width: 100%;
-  border-radius: 25px;
+  border-radius: @border-radius;
 
   &.splash {
-    height: ~"calc(100vh - 70px)"
+    height: ~"calc(100vh - 80px)"
   }
 }
 
@@ -34,7 +38,7 @@ body {
   margin-top: @internal-margin;
   margin-bottom: @internal-margin;
   cursor: pointer;
-  
+
   .small-logo {
     width: 380px;
   }  
@@ -42,8 +46,8 @@ body {
 
 .page-content {
   margin-top: 100px;
-  margin-left: 35px;
-  margin-right: 35px;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-bottom: 50px;
   &.page-content-columns {
     display: flex;
@@ -53,8 +57,56 @@ body {
       flex: 1;
     }
   }
+
+  .content-section {
+    margin-bottom: 75px;
+    &.narrow {
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+  }
 }
 
+.team-container {  
+  //margin: 0 @app-padding;
+  border: 1px solid @color-light;
+  border-radius: @border-radius;
+
+  .team-grid {
+    display: flex;
+    flex-direction: row;
+    .team-grid-item {
+      flex: 1;
+      margin: 40px 10%;
+    }
+  }
+
+  .team-member-centered-image {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .team-member-image-container {
+    position: relative;
+    margin-bottom: 40px;
+    .team-member-image {
+      height: 350px;
+      &.avatar {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;  
+        &:hover {
+          opacity: 1;
+        }
+        transition: opacity 0.35s ease-in-out;
+      }
+    }  
+  }
+}
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */

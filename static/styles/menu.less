@@ -18,15 +18,20 @@
   .menu-list-button {
     margin-right: 10px;
   }
+}
 
-  .menu-button {
-    border: 1px solid @color-light;
-    border-radius: 35px;
-    cursor: pointer;
-    padding: 10px 40px;
-    &:hover {
-      background-color: @color-light-transparent;
-    }
-    transition: background-color 0.25s ease-in-out;
+.menu-button {
+  display: inline-block;
+  border: 1px solid @color-light;
+  border-radius: 35px;
+  cursor: pointer;
+  padding: 10px 40px;
+  &:hover {
+    background-color: @color-light-transparent;
+  }
+  transition: background-color 0.25s ease-in-out;
+
+  &.small {
+    padding: 10px 20px;
   }
 }
