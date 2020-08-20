@@ -2,10 +2,12 @@
 @import "./typography.less";
 @import "./menu.less";
 @import "./background.less";
+@import "./splash.less";
 
 body {
   margin: 0;
   color: @color-light;
+  //overflow: hidden;
 }
 
 .app-container {
@@ -16,11 +18,43 @@ body {
 .page-container {  
   position: relative;
   border: 1px solid white;
-  min-height: 300px;
   width: 100%;
   border-radius: 25px;
-  padding: 150px 0;
+
+  &.splash {
+    height: ~"calc(100vh - 70px)"
+  }
 }
+
+.small-logo-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: @internal-margin;
+  margin-bottom: @internal-margin;
+  cursor: pointer;
+  
+  .small-logo {
+    width: 380px;
+  }  
+}
+
+.page-content {
+  margin-top: 100px;
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-bottom: 50px;
+  &.page-content-columns {
+    display: flex;
+    flex-direction: row;
+
+    .page-column {
+      flex: 1;
+    }
+  }
+}
+
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */

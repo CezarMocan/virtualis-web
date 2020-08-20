@@ -18,11 +18,11 @@ class Main extends React.Component {
         <div className="menu-button" onClick={this.onMenuToggle}><h3 className="noselect">Menu</h3></div>
         { open && 
         <div className="menu-options-container">
-          <ShallowLink href="/home"><div className="menu-button menu-list-button"><h3 className="noselect">Home</h3></div></ShallowLink>
+          {/* <ShallowLink href="/home"><div className="menu-button menu-list-button"><h3 className="noselect">Home</h3></div></ShallowLink> */}
           <ShallowLink href="/tours"><div className="menu-button menu-list-button"><h3 className="noselect">Tour Packages</h3></div></ShallowLink>
           <ShallowLink href="/book"><div className="menu-button menu-list-button"><h3 className="noselect">Book a Tour</h3></div></ShallowLink>
           <ShallowLink href="/about"><div className="menu-button menu-list-button"><h3 className="noselect">About</h3></div></ShallowLink>
-          <ShallowLink href="/join"><div className="menu-button menu-list-button"><h3 className="noselect">Join Portal</h3></div></ShallowLink>
+          {/* <ShallowLink href="/join"><div className="menu-button menu-list-button"><h3 className="noselect">Join Portal</h3></div></ShallowLink> */}
           <ShallowLink href="/faq"><div className="menu-button menu-list-button"><h3 className="noselect">FAQ</h3></div></ShallowLink>
         </div>
         }
