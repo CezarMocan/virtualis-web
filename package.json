@@ -17,11 +17,13 @@
   "dependencies": {
     "@svgr/webpack": "^5.4.0",
     "@zeit/next-less": "^1.0.1",
+    "classnames": "^2.2.6",
     "less": "^3.12.2",
     "next": "^9.5.2",
     "next-images": "^1.4.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "react-twitch-embed-video": "^2.0.4"
   }
 }

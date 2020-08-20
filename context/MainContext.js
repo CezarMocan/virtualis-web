@@ -28,7 +28,10 @@ export default class MainContextProvider extends React.Component {
         isMobile = true;
       }
       const { url, router } = this.props
-      this.setState({ isMobile, url, router })    
+      this.setState({ 
+        isMobile, url, router,
+        TwitchEmbedVideo: require('react-twitch-embed-video'),
+      })    
     }
 
     render() {

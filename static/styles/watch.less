@@ -1,0 +1,49 @@
+.watch-live-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 75px;
+  iframe {
+    border-radius: 25px;
+  }
+}
+
+.schedule-container {
+  padding: 0 8.5vw;
+}
+
+.watch-recording-container {
+  border: 1px solid @color-light;
+  border-radius: 100px;
+  padding: 15px 50px;
+  margin-bottom: 50px;
+  transition: height 1s ease-in-out;
+  overflow: hidden;
+
+  .twitch-video-container {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  iframe {
+    border-radius: 25px;
+  }
+
+  &.interactive {
+    cursor: pointer;
+    &:hover {
+      background-color: @color-light-transparent;
+    }  
+  }
+
+  .date-time-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
