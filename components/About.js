@@ -6,6 +6,7 @@ import MattImage from '../static/img/matt-image.png'
 import MattAvatar from '../static/img/matt-avatar.png'
 import LydiaImage from '../static/img/lydia-image.png'
 import LydiaAvatar from '../static/img/lydia-avatar.png'
+import { about } from '../content/about'
 
 class Main extends React.Component {
   render() {
@@ -16,18 +17,7 @@ class Main extends React.Component {
 
         <div className="page-content">
           <div className="content-section narrow">
-            <p className="large centered">
-              The #1 VRChat Tour Agency!
-            </p>
-
-            <p className="large centered">
-              Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR. While being playful, performative, and fun, their tours are also critical examinations of the culture making, body confusions, and social norms specific to VRChat and prevalent in social VR as a medium. 
-            </p>
-
-            <p className="large centered">
-              Virtualis is the manifestion of the belief that media theory and deep thinking around the future of our digital spaces and counterparts can be explored and discussed outside of research papers and academic instituitions. Book a tour today and join us in exploring and questioning what social VR can teach us about the world today."
-            </p>
-
+            { about.description.map(p => <p className="large centered">{p}</p>) }
           </div>
 
           <div className="team-container">
@@ -38,52 +28,49 @@ class Main extends React.Component {
 
                 <div className="team-member-centered-image">
                   <div className="team-member-image-container">
-                    <img className="team-member-image" src={LydiaImage}/>
-                    <img className="team-member-image avatar" src={LydiaAvatar}/>
+                    <img className="team-member-image" src={about.lydia.image}/>
+                    <img className="team-member-image avatar" src={about.lydia.avatar}/>
                   </div>
                 </div>
 
-                <h3 className="centered">Lydia Jessup</h3>
-
-                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
-                <p className="small">His work has been shown at BAM, Mana Contemporary, Soho Rep, The Public Theater, 3LD Art + Technology Center, and more. His art installation work has been shown at Sundance’s New Frontier Program, IDFA’s Doclab, and SXSW. He has had artist residencies and received grants from Pioneer Works, Google, CultureHub, Signal Culture, NYU, and more. He is currently a faculty member at ITP/IMA NYU in Brooklyn NY.</p>
-                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+                <h3 className="centered">{about.lydia.name}</h3>
+                { about.lydia.bio.map(p => <p className="small">{p}</p>) }
+                <p className="small"><a href={about.lydia.website} target="_blank">{about.lydia.website}</a></p>
               </div>
               
               <div className="team-grid-item">
                 <div className="team-member-centered-image">
                   <div className="team-member-image-container">
-                    <img className="team-member-image" src={MattImage}/>
-                    <img className="team-member-image avatar" src={MattAvatar}/>
+                    <img className="team-member-image" src={about.matt.image}/>
+                    <img className="team-member-image avatar" src={about.matt.avatar}/>
                   </div>
                 </div>
 
-                <h3 className="centered">Matt Romein</h3>
+                <h3 className="centered">{about.matt.name}</h3>
+                { about.matt.bio.map(p => <p className="small">{p}</p>) }
+                <p className="small"><a href={about.matt.website} target="_blank">{about.matt.website}</a></p>
 
-                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
-                <p className="small">His work has been shown at BAM, Mana Contemporary, Soho Rep, The Public Theater, 3LD Art + Technology Center, and more. His art installation work has been shown at Sundance’s New Frontier Program, IDFA’s Doclab, and SXSW. He has had artist residencies and received grants from Pioneer Works, Google, CultureHub, Signal Culture, NYU, and more. He is currently a faculty member at ITP/IMA NYU in Brooklyn NY.</p>
-                <p className="small"><a href="https://matt-romein.com/" target="_blank">https://matt-romein.com/</a></p>                
               </div>
             </div>
 
             <h3 className="centered">Meet the Team</h3>
             <div className="team-grid no-margin-bottom">
               <div className="team-grid-item small-margin">
-                <h4 className="">Emily Lin</h4>
-                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
-                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+                <h4>{about.emily.name}</h4>
+                { about.emily.bio.map(p => <p className="small">{p}</p>) }
+                <p className="small"><a href={about.emily.website} target="_blank">{about.emily.website}</a></p>
               </div>
 
               <div className="team-grid-item small-margin">
-                <h4 className="">James Hosken</h4>
-                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
-                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+                <h4>{about.james.name}</h4>
+                { about.james.bio.map(p => <p className="small">{p}</p>) }
+                <p className="small"><a href={about.james.website} target="_blank">{about.james.website}</a></p>
               </div>
 
               <div className="team-grid-item small-margin">
-                <h4 className="">Cezar Mocan</h4>
-                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
-                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+                <h4>{about.cezar.name}</h4>
+                { about.cezar.bio.map(p => <p className="small">{p}</p>) }
+                <p className="small"><a href={about.cezar.website} target="_blank">{about.cezar.website}</a></p>
               </div>
             </div>
           </div>
@@ -91,18 +78,18 @@ class Main extends React.Component {
           <h3 className="centered">Contact Us</h3>
             <div className="team-grid no-margin-bottom">
               <div className="team-grid-item small-margin center-content">
-                <a href="tel:+1-302-293-2147">  
-                  <div className="contact-item-container"><p className="large centered">+1-302-293-2147</p></div>
+                <a href={"tel:" + about.contact.tel}>  
+                  <div className="contact-item-container"><p className="large centered">{about.contact.tel}</p></div>
                 </a>
               </div>
               <div className="team-grid-item small-margin center-content">
-                <a href="mailto:hello@virtualis.agency">
-                  <div className="contact-item-container"><p className="large centered">hello@virtualis.agency</p></div>
+                <a href={"mailto:" + about.contact.email}>
+                  <div className="contact-item-container"><p className="large centered">{about.contact.email}</p></div>
                 </a>
               </div>
               <div className="team-grid-item small-margin center-content">
-                <a href="https://www.instagram.com/virtualis">
-                  <div className="contact-item-container"><p className="large centered">@virtualis</p></div>
+                <a href={"https://www.instagram.com/" + about.contact.instagram}>
+                  <div className="contact-item-container"><p className="large centered">@{about.contact.instagram}</p></div>
                 </a>
               </div>
             </div>
