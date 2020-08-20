@@ -4,7 +4,7 @@ import Background from './Background'
 import Menu from './Menu'
 import Book from './Book'
 import FAQ from './FAQ'
-import Join from './Join'
+import Watch from './Watch'
 import Tours from './Tours'
 import About from './About'
 import Splash from './Splash'
@@ -13,7 +13,7 @@ const NAV = {
   ABOUT: "about",
   BOOK: "book",
   FAQ: "faq",
-  JOIN: "join",
+  WATCH: "watch",
   TOURS: "tours",
   HOME: ""  
 }
@@ -32,7 +32,7 @@ class Main extends React.Component {
         { lUrl == NAV.ABOUT && <About/>}
         { lUrl == NAV.BOOK && <Book/>}
         { lUrl == NAV.FAQ && <FAQ/>}
-        { lUrl == NAV.JOIN && <Join/>}
+        { lUrl == NAV.WATCH && <Watch/>}
         { lUrl == NAV.TOURS && <Tours/>}
         { (lUrl == NAV.HOME || badUrl) && <Splash/>}
       </div>

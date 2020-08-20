@@ -21,8 +21,8 @@ class Main extends React.Component {
           {/* <ShallowLink href="/home"><div className="menu-button menu-list-button"><h3 className="noselect">Home</h3></div></ShallowLink> */}
           <ShallowLink href="/tours" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect">Tour Packages</h3></div></ShallowLink>
           <ShallowLink href="/book" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect">Book a Tour</h3></div></ShallowLink>
+          <ShallowLink href="/watch" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect">Watch Now</h3></div></ShallowLink>
           <ShallowLink href="/about" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect">About</h3></div></ShallowLink>
-          {/* <ShallowLink href="/join"><div className="menu-button menu-list-button"><h3 className="noselect">Join Portal</h3></div></ShallowLink> */}
           <ShallowLink href="/faq" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect">FAQ</h3></div></ShallowLink>
         </div>
         }

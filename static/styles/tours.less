@@ -36,3 +36,23 @@
 .schedule-item-container {
   margin-bottom: 20px;   
 }
+
+.coming-soon-tours-container {
+  display: flex;
+  flex-direction: row;
+
+  .coming-soon-tour-container {
+    flex: 1;
+    margin: 20px 30px -30px 30px;
+
+    .small-tour-card-column {
+      &.image {
+        margin: 30px 0 20px 0;
+        img {
+          width: 100%;
+          border-radius: 25px;
+        }
+      }
+    }
+  }
+}
