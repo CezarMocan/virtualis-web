@@ -4,9 +4,9 @@ import { withMainContext } from '../context/MainContext'
 
 class ShallowLink extends React.Component {
   onClick = () => {
-    const { router, href } = this.props
-    console.log(router.pathname, href)
+    const { router, href, onClick } = this.props
     router.push(router.pathname, href, { shallow: true })
+    if (onClick) onClick()
   }
   render() {
     const { children } = this.props

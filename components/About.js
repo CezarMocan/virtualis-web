@@ -10,7 +10,6 @@ import LydiaAvatar from '../static/img/lydia-avatar.png'
 class Main extends React.Component {
   render() {
     const { url } = this.props.url
-    console.log('LI', LydiaImage)
     return (
       <div className="page-container">
         <Logo className="small-logo"/>
@@ -67,7 +66,48 @@ class Main extends React.Component {
               </div>
             </div>
 
+            <h3 className="centered">Meet the Team</h3>
+            <div className="team-grid no-margin-bottom">
+              <div className="team-grid-item small-margin">
+                <h4 className="">Emily Lin</h4>
+                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
+                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+              </div>
+
+              <div className="team-grid-item small-margin">
+                <h4 className="">James Hosken</h4>
+                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
+                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+              </div>
+
+              <div className="team-grid-item small-margin">
+                <h4 className="">Cezar Mocan</h4>
+                <p className="small">Matt Romein is an artist and performer whose work consists of live performance, generative computer art, and multi-media installation. His practice explores the ways in which the physical body is recreated and represented in digital spaces and how the digital body can be manipulated in evocative and unsettling ways that challenges ideas of identity, autonomy, and ethics. </p>
+                <p className="small"><a href="https://www.lydiajessup.me/" target="_blank">https://www.lydiajessup.me/</a></p>
+              </div>
+            </div>
           </div>
+
+          <h3 className="centered">Contact Us</h3>
+            <div className="team-grid no-margin-bottom">
+              <div className="team-grid-item small-margin center-content">
+                <a href="tel:+1-302-293-2147">  
+                  <div className="contact-item-container"><p className="large centered">+1-302-293-2147</p></div>
+                </a>
+              </div>
+              <div className="team-grid-item small-margin center-content">
+                <a href="mailto:hello@virtualis.agency">
+                  <div className="contact-item-container"><p className="large centered">hello@virtualis.agency</p></div>
+                </a>
+              </div>
+              <div className="team-grid-item small-margin center-content">
+                <a href="https://www.instagram.com/virtualis">
+                  <div className="contact-item-container"><p className="large centered">@virtualis</p></div>
+                </a>
+              </div>
+            </div>
+
+
         </div>
 
       </div>

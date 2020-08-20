@@ -1,13 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 import { withMainContext } from '../context/MainContext'
+import Logo from './Logo'
 
 class Main extends React.Component {
   render() {
     const { url } = this.props.url
     return (
       <div className="page-container">
-        <h1>Join portal</h1>
+        <Logo className="small-logo"/>
       </div>
     )
   }

@@ -1,12 +1,13 @@
 import React from 'react'
 import { withMainContext } from '../context/MainContext'
+import Logo from './Logo'
 
 class Main extends React.Component {
   render() {
     const { url } = this.props.url
     return (
       <div className="page-container">
-        <h1>FAQ</h1>
+        <Logo className="small-logo"/>
       </div>
     )
   }
