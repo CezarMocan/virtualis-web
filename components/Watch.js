@@ -60,7 +60,7 @@ class Main extends React.Component {
             })}
           </div>
 
-          <h1 className="centered">Past Tours</h1>
+          <h1 className="centered">Watch Our Past Tours</h1>
           <div className="schedule-container">
             { watch.pastSessions.map((s, index) => {
               return (

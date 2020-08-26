@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next build && next start",
     "export": "rm -rf .next && next build && next export",
-    "sync:s3": "AWS_DEFAULT_PROFILE=cezar-cli aws s3 sync out s3://virtualis.net",
+    "sync:s3": "AWS_DEFAULT_PROFILE=cezar-cli aws s3 sync out s3://virtualis.vr",
     "deploy": "npm run export && npm run sync:s3"
   },
   "author": "",
@@ -21,6 +21,7 @@
     "less": "^3.12.2",
     "next": "^9.5.2",
     "next-images": "^1.4.1",
+    "paper": "^0.12.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-transition-group": "^4.4.1",
