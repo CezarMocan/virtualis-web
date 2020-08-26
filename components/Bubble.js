@@ -9,15 +9,14 @@ export default class Bubble {
   constructor(x, y, r) {
     this.r = r
     this.shape = new paper.Path.Circle(new paper.Point(x, y), r)
+    this.gradientStops = [
+      [new paper.Color(1, 1, 1, 0.6), 0.06], 
+      [new paper.Color(1, 1, 1, 0.4), 0.2], 
+      [new paper.Color(1, 1, 1, 0.3), 0.3], 
+      [new paper.Color(1, 1, 1, 0.1), 1]
+    ]
     this.fillColor = {
-      gradient: {
-        stops: [
-          [new paper.Color(1, 1, 1, 0.6), 0.06], 
-          [new paper.Color(1, 1, 1, 0.4), 0.2], 
-          [new paper.Color(1, 1, 1, 0.3), 0.3], 
-          [new paper.Color(1, 1, 1, 0.1), 1]
-        ],
-      },
+      gradient: { stops: this.gradientStops },
       origin: new paper.Point(x + r, y + r / 4),
       destination: new paper.Point(x - r, y - r / 4)
     }
@@ -85,6 +84,15 @@ export default class Bubble {
         const scale = valmap(eT, 0, 1, SCALE_REGULAR, SCALE_HOVERED)
         this.shape.scale(scale / this.prevScale)
         this.prevScale = this.currentScale = scale
+      }
+    }
+
+    // Update gradient
+    if (this.shape.x && this.shape.y) {
+      this.fillColor = {
+        gradient: { stops: this.gradientStops },
+        origin: new paper.Point(this.shape.x + this.r, this.shape.y + this.r / 4),
+        destination: new paper.Point(this.shape.x - this.r, this.shape.y - this.r / 4)
       }
     }
   }
