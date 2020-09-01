@@ -90,8 +90,6 @@ class Main extends React.Component {
       const b = this.spawnBubble()
       this.bubbles.push(b)
       this.updateNextSpawnTime()
-      console.log(this.graph)
-      console.log(cc)
     }
   }
   componentDidMount() {
