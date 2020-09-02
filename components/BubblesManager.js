@@ -21,7 +21,7 @@ const SPAWN_TIME_UPPER_BOUND_S = 3
 const MAX_BUBBLE_RADIUS = 75
 const MIN_BUBBLE_RADIUS = 20
 
-const TEXT_SPEED = 0.5
+const TEXT_SPEED = 1
 
 let B_ID = 0
 
