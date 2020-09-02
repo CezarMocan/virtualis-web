@@ -1,7 +1,7 @@
 import React from 'react'
 import { withMainContext } from '../context/MainContext'
-import paper from 'paper'
-import { random, computeConnectedComponents } from '../modules/utils'
+import paper, { Point, Size } from 'paper'
+import { random, computeConnectedComponents, createAlignedText, updateAlignedText } from '../modules/utils'
 import Bubble from './Bubble'
 import Image1 from '../static/img/splash/1.png'
 import Image2 from '../static/img/splash/2.png'
@@ -20,6 +20,8 @@ const SPAWN_TIME_LOWER_BOUND_S = 1
 const SPAWN_TIME_UPPER_BOUND_S = 3
 const MAX_BUBBLE_RADIUS = 75
 const MIN_BUBBLE_RADIUS = 20
+
+const TEXT_SPEED = 0.5
 
 let B_ID = 0
 
@@ -76,7 +78,7 @@ class Main extends React.Component {
     return this.graph
   }
 
-  draw = (evt) => {
+  drawBubbles = (evt) => {
     // Remove dead bubbles
     this.bubbles.forEach(b => { if (b.isDead) b.remove() })
     this.bubbles = this.bubbles.filter(b => !b.isDead)
@@ -108,8 +110,37 @@ class Main extends React.Component {
       this.updateNextSpawnTime()
     }
   }
+
+  initializeText = () => {
+    const padding = 27
+    const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
+    const cornerSize = new paper.Size(20, 20);
+    this._frame = new paper.Path.Rectangle(rect, cornerSize)
+    // this._frame.strokeColor = 'white'
+    // this._frame.strokeWidth = 1
+
+    // Circle Example
+    // this.textOnPath = createAlignedText("The #1 VR Tour Agency", this._frame, { fontSize: 24, fillColor: 'white' })
+    this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
+      fontSize: 17, 
+      fillColor: 'white',
+      fontFamily: 'Graphik-Bold'
+    })
+    this.textOffset = 0
+  }
+  drawText = () => {
+    this.textOffset += TEXT_SPEED
+    updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
+  }
+
+  draw = (evt) => {
+    this.drawBubbles(evt)
+    this.drawText(evt)
+  }
+
   componentDidMount() {
-    this.spawnInitialBubbles()    
+    this.spawnInitialBubbles()
+    this.initializeText()
   }
   render() {
     return (

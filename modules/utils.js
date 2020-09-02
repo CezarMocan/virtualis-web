@@ -1,3 +1,5 @@
+import paper, { Point, Size } from 'paper'
+
 export const random = (low, high) => (Math.random() * (high - low) + low)
 export const valmap = (v, a, b, x, y) => {
   return ((v - a) / (b - a)) * (y - x) + x
@@ -51,4 +53,76 @@ export const computeConnectedComponents = (graph) => {
     q.forEach(n => assignment[n] = cId)
   }
   return { assignment, components }
+}
+
+export const createAlignedText = (str, path, style, reps = 20) => {
+  if (str && str.length > 0 && path) {
+    // create PointText object for each glyph
+    var glyphTexts = [];
+    for (var i = 0; i < str.length; i++) {
+        glyphTexts[i] = createPointText(str.substring(i, i+1), style);
+        glyphTexts[i].justification = "center";
+    }
+    // for each glyph find center xOffset
+    var xOffsets = [0];
+    for (var i = 1; i < str.length; i++) {
+        var pairText = createPointText(str.substring(i - 1, i + 1), style);
+        pairText.remove();
+        xOffsets[i] = xOffsets[i - 1] + pairText.bounds.width - 
+            glyphTexts[i - 1].bounds.width / 2 - glyphTexts[i].bounds.width / 2;
+    }
+
+    reps = Math.min(reps, Math.floor(path.length / (xOffsets[xOffsets.length - 1] + 10)))
+
+    for (let i = 1; i < reps; i++) {
+      let reminder = Math.floor(path.length) % reps
+      let currOffset = Math.floor(path.length / reps) * i + (i <= reminder)
+      for (let j = 0; j < str.length; j++) {
+        xOffsets.push(xOffsets[j] + currOffset)
+        glyphTexts.push(createPointText(str.substring(j, j+1), style))
+        glyphTexts[glyphTexts.length - 1].justification = "center"
+      }
+    }
+
+    updateAlignedText(glyphTexts, xOffsets, path, 0)
+    return { glyphTexts, xOffsets }
+  }
+}
+
+export const updateAlignedText = (glyphTexts, xOffsets, path, offset, speed = -1) => {
+  for (var i = 0; i < glyphTexts.length; i++) {
+    var centerOffs = xOffsets[i] + offset;
+    if (path.length < centerOffs) {
+        if (path.closed) {
+            centerOffs = centerOffs % path.length;
+        }  else {
+            centerOffs = undefined;
+        }
+    }
+    if (centerOffs === undefined) {
+        glyphTexts[i].remove();
+    } else {
+        var pathPoint = path.getPointAt(centerOffs);
+        glyphTexts[i].point = pathPoint;
+        if (speed > 0) {
+          var oldTan = path.getTangentAt((centerOffs + path.length - speed) % path.length); 
+          var tan = path.getTangentAt(centerOffs); 
+          // console.log(centerOffs, offset, tan.angle, oldTan.angle)
+          glyphTexts[i].rotate(tan.angle - oldTan.angle, pathPoint);  
+        } else {
+          var tan = path.getTangentAt(centerOffs); 
+          glyphTexts[i].rotate(tan.angle, pathPoint);  
+        }
+    }
+  }
+}
+
+// create a PointText object for a string and a style
+const createPointText = (str, style) => {
+  var text = new paper.PointText();
+  text.content = str;
+  Object.keys(style).forEach(k => {
+    text[k] = style[k]
+  })
+  return text;
 }
