@@ -21,6 +21,8 @@ const SPAWN_TIME_UPPER_BOUND_S = 3
 const MAX_BUBBLE_RADIUS = 75
 const MIN_BUBBLE_RADIUS = 20
 
+let B_ID = 0
+
 class Main extends React.Component {
   graph = []
   bubbles = []
@@ -33,10 +35,15 @@ class Main extends React.Component {
   }
   spawnBubble(onScreen = false) {
     let x = random(0, this.width)
-    let y = onScreen ? random(0, this.height) : random(this.height + 175, this.height + 250)
     let r = random(MIN_BUBBLE_RADIUS, MAX_BUBBLE_RADIUS)
-    // console.log('Spawn: ', x, y, r, this.width, this.height, paper.view.size.height)
+    let y = onScreen ? random(0, this.height) : random(this.height + r, this.height + 2 * r)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
+
+    // x = 50 * B_ID
+    // y = 50 * B_ID
+    // r = 10
+    // B_ID++
+
     return new Bubble(x, y, r, IMAGES[index])
   }
   spawnInitialBubbles() {
@@ -102,7 +109,7 @@ class Main extends React.Component {
     }
   }
   componentDidMount() {
-    this.spawnInitialBubbles()
+    this.spawnInitialBubbles()    
   }
   render() {
     return (

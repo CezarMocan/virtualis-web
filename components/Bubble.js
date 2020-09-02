@@ -45,18 +45,14 @@ export default class Bubble {
     this.circle.fillColor = this.fillColor
     this.circle.strokeColor = 'white'
     this.circle.strokeWidth = 1
-    /*
-    this.circle2.fillColor = this.fillColor
-    this.circle2.strokeColor = 'white'
-    this.circle2.strokeWidth = 0
-    */
 
-    this.shape = new paper.Group([this.clipCircle, this.raster, this.circle, this.renderCircle])
+    this.shape = new paper.Group([])
     this.shape.position = new paper.Point(0, 0)
+    this.shape.addChild(this.clipCircle)
+    this.shape.addChild(this.raster)
+    this.shape.addChild(this.circle)
+    this.shape.addChild(this.renderCircle)
     this.shape.clipped = true
-
-    // this.shape.strokeWidth = 1
-    // this.shape.strokeColor = 'red'
 
     this.shape.onMouseEnter = this.onMouseEnter
     this.shape.onMouseLeave = this.onMouseLeave
