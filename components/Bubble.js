@@ -4,7 +4,7 @@ import { random, easeOutElastic, easeOutCubic, valmap, clamp, sqDist } from '../
 const HOVER_SCALE_TIME_S = 1
 const SCALE_HOVERED = 1.5
 const SCALE_REGULAR = 1
-const RASTER_LOAD_SIZE = 1024
+const RASTER_LOAD_SIZE = 768
 
 let UID = 0
 
@@ -224,12 +224,8 @@ export default class Bubble {
       this.renderModeGroup = true
       if (this.renderCircle) {
         this.renderCircle.remove()
-        this.renderCircle.onMouseEnter = null
-        this.renderCircle.onMouseLeave = null
       }
       this.renderCircle = this.circle.clone({ insert: false })
-      // this.renderCircle.onMouseEnter = this.onMouseEnter
-      // this.renderCircle.onMouseLeave = this.onMouseLeave
       
       for (let i = 1; i < g.length; i++) {
         let c = g[i].getCircle()
@@ -237,26 +233,10 @@ export default class Bubble {
       }
 
       this.clipCircle = this.renderCircle.clone({ insert: false })
-      // this.shape.addChild(this.renderCircle)
-      // rthis.circ
       this.renderCircle.fillColor = this.circle.fillColor
       this.renderCircle.strokeColor = this.circle.strokeColor
       this.renderCircle.strokeWidth = 1
-
-      /*
-      const newWidth = this.renderCircle.bounds.width / 8
-      const newHeight = this.renderCircle.bounds.height / 8
-      const newSize = Math.max(newWidth, newHeight)
-      const newRasterScale = newSize / this.rasterSize
-      this.rasterSize = newSize
-      this.raster.scale(newRasterScale / this.rasterScale)
-      this.rasterScale = newRasterScale
-      // console.log(newWidth, newHeight)
-      // this.raster.size = new paper.Size(newSize, newSize)
-      this.raster.position.x = this.renderCircle.bounds.x + this.renderCircle.bounds.width / 2
-      this.raster.position.y = this.renderCircle.bounds.y + this.renderCircle.bounds.height / 2
-      */
-
+      
       this.shape.removeChildren()
       this.shape.addChild(this.clipCircle)
       this.shape.addChild(this.raster)

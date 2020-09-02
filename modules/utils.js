@@ -71,8 +71,9 @@ export const createAlignedText = (str, path, style, reps = 20) => {
         xOffsets[i] = xOffsets[i - 1] + pairText.bounds.width - 
             glyphTexts[i - 1].bounds.width / 2 - glyphTexts[i].bounds.width / 2;
     }
-
-    reps = Math.min(reps, Math.floor(path.length / (xOffsets[xOffsets.length - 1] + 10)))
+    
+    const textPadding = 25
+    reps = Math.min(reps, Math.floor(path.length / (xOffsets[xOffsets.length - 1] + textPadding)))
 
     for (let i = 1; i < reps; i++) {
       let reminder = Math.floor(path.length) % reps
