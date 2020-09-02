@@ -35,7 +35,7 @@ class Main extends React.Component {
     let x = random(0, this.width)
     let y = onScreen ? random(0, this.height) : random(this.height + 175, this.height + 250)
     let r = random(MIN_BUBBLE_RADIUS, MAX_BUBBLE_RADIUS)
-    console.log('Spawn: ', x, y, r, this.width, this.height, paper.view.size.height)
+    // console.log('Spawn: ', x, y, r, this.width, this.height, paper.view.size.height)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
     return new Bubble(x, y, r, IMAGES[index])
   }
@@ -53,18 +53,20 @@ class Main extends React.Component {
     paper.view.onFrame = this.draw
     paper.view.draw();
   }
-  buildGraph() {
+  buildGraph(bubbles) {
     this.graph = []
-    for (let i = 0; i < this.bubbles.length; i++) this.graph.push([])
+    for (let i = 0; i < bubbles.length; i++) this.graph.push([])
 
-    for (let i = 0; i < this.bubbles.length; i++) {
-      for (let j = i + 1; j < this.bubbles.length; j++) {
-        if (this.bubbles[i].intersects(this.bubbles[j])) {
+    for (let i = 0; i < bubbles.length; i++) {
+      for (let j = i + 1; j < bubbles.length; j++) {
+        if (bubbles[i].intersects(bubbles[j])) {
           this.graph[i].push(j)
           this.graph[j].push(i)
         }
       }
     }
+
+    return this.graph
   }
 
   draw = (evt) => {
@@ -76,13 +78,15 @@ class Main extends React.Component {
       return 1
     })
 
-    this.buildGraph()
-    const cc = computeConnectedComponents(this.graph)
+    let bubblesToProcess = this.bubbles.filter(b => !b.isHovered)
+
+    const graph = this.buildGraph(bubblesToProcess)
+    const cc = computeConnectedComponents(graph)
 
     for (let index = 0; index < cc.components.length; index++) {
       let comp = cc.components[index]
-      let main = this.bubbles[comp[0]]
-      let group = comp.map(i => this.bubbles[i])
+      let main = bubblesToProcess[comp[0]]
+      let group = comp.map(i => bubblesToProcess[i])
       main.setRenders(true)
       main.setGroup(group)
       for (let i = 1; i < group.length; i++) {

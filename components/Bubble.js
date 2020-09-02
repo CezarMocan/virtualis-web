@@ -4,6 +4,7 @@ import { random, easeOutElastic, easeOutCubic, valmap, clamp, sqDist } from '../
 const HOVER_SCALE_TIME_S = 1
 const SCALE_HOVERED = 1.5
 const SCALE_REGULAR = 1
+const RASTER_LOAD_SIZE = 1024
 
 let UID = 0
 
@@ -17,6 +18,8 @@ export default class Bubble {
     this.raster.opacity = 0
     this.raster.source = imageUrl
     this.raster.onLoad = this.onImageLoad
+    this.rasterScale = 1
+    this.rasterSize = RASTER_LOAD_SIZE
 
     this.circle = new paper.Path.Circle(new paper.Point(x, y), r)
     this.renderCircle = this.circle.clone()
@@ -76,8 +79,11 @@ export default class Bubble {
     this._group = [0]
   }
   onImageLoad = () => {
-    this.raster.size = new paper.Size(7.5 * this.r, 7.5 * this.r)
+    this.raster.size = new paper.Size(RASTER_LOAD_SIZE, RASTER_LOAD_SIZE)
     this.raster.position = new paper.Point(this.circle.position.x, this.circle.position.y)
+    this.rasterScale = 3.5 * this.r / RASTER_LOAD_SIZE
+    this.rasterSize = RASTER_LOAD_SIZE * this.rasterScale 
+    this.raster.scale(this.rasterScale)
     this.raster.opacity = 0
   }
   onMouseEnter = (e) => {
@@ -210,11 +216,12 @@ export default class Bubble {
         this.shape.addChild(this.raster)
         this.shape.addChild(this.circle)
         this.shape.clipped = true
-        // this.shape.insertChild(1, this.raster)
-        console.log(this.shape.children)
-        // this.circle.onMouseEnter = this.onMouseEnter
-        // this.circle.onMouseLeave = this.onMouseLeave  
-        // delete this.renderCircle
+
+        const newRasterScale = 3.5 * this.r / RASTER_LOAD_SIZE
+        this.rasterSize = RASTER_LOAD_SIZE * this.newRasterScale 
+        this.raster.scale(newRasterScale / this.rasterScale)
+        this.raster.position = this.circle.position.clone()
+        this.rasterScale = newRasterScale
       }
     } else if (g.length > 1) {
       if (this.isHovered) return
@@ -240,14 +247,32 @@ export default class Bubble {
       this.renderCircle.strokeColor = this.circle.strokeColor
       this.renderCircle.strokeWidth = 1
 
-      const newWidth = Math.max(this.raster.size.width, this.renderCircle.bounds.width)
-
-      this.raster.size = new paper.Size(newWidth, newWidth)
+      /*
+      const newWidth = this.renderCircle.bounds.width / 8
+      const newHeight = this.renderCircle.bounds.height / 8
+      const newSize = Math.max(newWidth, newHeight)
+      const newRasterScale = newSize / this.rasterSize
+      this.rasterSize = newSize
+      this.raster.scale(newRasterScale / this.rasterScale)
+      this.rasterScale = newRasterScale
+      // console.log(newWidth, newHeight)
+      // this.raster.size = new paper.Size(newSize, newSize)
+      this.raster.position.x = this.renderCircle.bounds.x + this.renderCircle.bounds.width / 2
+      this.raster.position.y = this.renderCircle.bounds.y + this.renderCircle.bounds.height / 2
+      */
 
       this.shape.removeChildren()
       this.shape.addChild(this.clipCircle)
       this.shape.addChild(this.raster)
       this.shape.addChild(this.renderCircle)      
+
+      const bounds = this.renderCircle.bounds.clone()
+      bounds.x -= bounds.width / 2
+      bounds.y -= bounds.height / 2
+      bounds.width += 1 * bounds.width
+      bounds.height += 1 * bounds.height
+      this.raster.fitBounds(bounds, true)
+
       this.shape.clipped = true
     }
     this._group = g
