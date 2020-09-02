@@ -124,7 +124,7 @@ class Main extends React.Component {
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
       fontSize: 17, 
       fillColor: 'white',
-      fontFamily: 'Graphik-Bold'
+      fontFamily: 'Graphik-Regular'
     })
     this.textOffset = 0
   }
