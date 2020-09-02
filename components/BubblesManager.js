@@ -33,8 +33,9 @@ class Main extends React.Component {
   }
   spawnBubble(onScreen = false) {
     let x = random(0, this.width)
-    let y = onScreen ? random(0, this.height) : random(this.height + 50, this.height + 250)
+    let y = onScreen ? random(0, this.height) : random(this.height + 175, this.height + 250)
     let r = random(MIN_BUBBLE_RADIUS, MAX_BUBBLE_RADIUS)
+    console.log('Spawn: ', x, y, r, this.width, this.height, paper.view.size.height)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
     return new Bubble(x, y, r, IMAGES[index])
   }
@@ -70,6 +71,10 @@ class Main extends React.Component {
     // Remove dead bubbles
     this.bubbles.forEach(b => { if (b.isDead) b.remove() })
     this.bubbles = this.bubbles.filter(b => !b.isDead)
+    this.bubbles = this.bubbles.sort((a, b) => {
+      if (a.getX() + a.r > b.getX() + b.r) return -1
+      return 1
+    })
 
     this.buildGraph()
     const cc = computeConnectedComponents(this.graph)

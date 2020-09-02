@@ -29,9 +29,9 @@ export default class Bubble {
     this.clipCircle = this.circle.clone()//new paper.Path.Circle(this.circle)    
 
     this.gradientStops = [
-      [new paper.Color(1, 1, 1, 0.6), 0.06], 
-      [new paper.Color(1, 1, 1, 0.4), 0.2], 
-      [new paper.Color(1, 1, 1, 0.3), 0.3], 
+      [new paper.Color(1, 1, 1, 0.4), 0.06], 
+      [new paper.Color(1, 1, 1, 0.3), 0.2], 
+      [new paper.Color(1, 1, 1, 0.25), 0.3], 
       [new paper.Color(1, 1, 1, 0.1), 1]
     ]
     this.fillColor = {
@@ -40,8 +40,8 @@ export default class Bubble {
       destination: new paper.Point(x - r, y - r / 4)
     }
     this.circle.fillColor = this.fillColor
-    this.circle.strokeColor = 'blue'
-    this.circle.strokeWidth = 0
+    this.circle.strokeColor = 'white'
+    this.circle.strokeWidth = 1
     /*
     this.circle2.fillColor = this.fillColor
     this.circle2.strokeColor = 'white'
@@ -55,8 +55,8 @@ export default class Bubble {
     // this.shape.strokeWidth = 1
     // this.shape.strokeColor = 'red'
 
-    this.circle.onMouseEnter = this.onMouseEnter
-    this.circle.onMouseLeave = this.onMouseLeave
+    this.shape.onMouseEnter = this.onMouseEnter
+    this.shape.onMouseLeave = this.onMouseLeave
     this.shape.onFrame = this.update
 
     // this.acceleration = new paper.Point(random(-0.1, 0.1), random(-0.3, -0.1))
@@ -76,38 +76,34 @@ export default class Bubble {
     this._group = [0]
   }
   onImageLoad = () => {
+    this.raster.size = new paper.Size(7.5 * this.r, 7.5 * this.r)
     this.raster.position = new paper.Point(this.circle.position.x, this.circle.position.y)
-    this.raster.size = new paper.Size(3.5 * this.r, 3.5 * this.r)
     this.raster.opacity = 0
   }
   onMouseEnter = (e) => {
     if (!this.renders) return
-    if (!this.renderModeGroup) {
-      console.log('onMouseEnter: ', this.id)
-      // this.shape.fillColor = 'red'
-      this.isMoving = false
-      this.isHovered = true
-      this.startHoverTimestamp = performance.now()  
-    } else {
-      console.log('onMouseEnterGroup: ', this.id)
-      // this.shape.fillColor = 'red'
-      this.isMoving = false
-      this.isHovered = true
-      this.startHoverTimestamp = performance.now()        
+    this.isMoving = false
+    this.isHovered = true
+    this.startHoverTimestamp = performance.now()  
+
+    if (this.renderModeGroup) {
+      this._group.forEach(b => {
+        b.isMoving = false
+        b.isHovered = true
+      })
     }
   }
   onMouseLeave = (e) => {
     if (!this.renders) return
-    if (!this.renderModeGroup) {
-      console.log('onMouseLeave: ', this.id)
-      this.isMoving = true
-      this.isHovered = false
-      this.stopHoverTimestamp = performance.now()
-    } else {
-      console.log('onMouseLeaveGroup: ', this.id)
-      this.isMoving = true
-      this.isHovered = false
-      this.stopHoverTimestamp = performance.now()
+    this.isMoving = true
+    this.isHovered = false
+    this.stopHoverTimestamp = performance.now()
+
+    if (this.renderModeGroup) {
+      this._group.forEach(b => {
+        b.isMoving = true
+        b.isHovered = false
+      })
     }
   }
   update = (e) => {
@@ -144,11 +140,10 @@ export default class Bubble {
         const scale = valmap(eT, 0, 1, this.currentScale, SCALE_REGULAR)
         if (!this.renderModeGroup) {
           this.circle.scale(scale / this.prevScale)
-          this.clipCircle.scale(scale / this.prevScale)
         } else {
           this.renderCircle.scale(scale / this.prevScale)
         }
-        // this.shape.scale(scale / this.prevScale)
+        this.clipCircle.scale(scale / this.prevScale)
         this.prevScale = scale
 
         const eO = easeOutCubic(t)
@@ -162,11 +157,10 @@ export default class Bubble {
         const scale = valmap(eT, 0, 1, SCALE_REGULAR, SCALE_HOVERED)
         if (!this.renderModeGroup) {
           this.circle.scale(scale / this.prevScale)
-          this.clipCircle.scale(scale / this.prevScale)
         } else {
           this.renderCircle.scale(scale / this.prevScale)
         }
-        // this.shape.scale(scale / this.prevScale)
+        this.clipCircle.scale(scale / this.prevScale)
         this.prevScale = this.currentScale = scale
 
         const eO = easeOutCubic(t)
@@ -209,14 +203,21 @@ export default class Bubble {
       this.renderModeGroup = false
       if (this.renderCircle.isInserted()) {
         this.renderCircle.remove()
+        this.clipCircle = this.circle.clone({ insert: false })
         // this.shape.addChild(this.circle)
-        this.shape.removeChildren(0)
-        this.shape.insertChild(0, this.circle)
-        this.circle.onMouseEnter = this.onMouseEnter
-        this.circle.onMouseLeave = this.onMouseLeave  
+        this.shape.removeChildren(0, 1)
+        this.shape.addChild(this.clipCircle)
+        this.shape.addChild(this.raster)
+        this.shape.addChild(this.circle)
+        this.shape.clipped = true
+        // this.shape.insertChild(1, this.raster)
+        console.log(this.shape.children)
+        // this.circle.onMouseEnter = this.onMouseEnter
+        // this.circle.onMouseLeave = this.onMouseLeave  
         // delete this.renderCircle
       }
     } else if (g.length > 1) {
+      if (this.isHovered) return
       this.renderModeGroup = true
       if (this.renderCircle) {
         this.renderCircle.remove()
@@ -224,32 +225,38 @@ export default class Bubble {
         this.renderCircle.onMouseLeave = null
       }
       this.renderCircle = this.circle.clone({ insert: false })
-      this.renderCircle.onMouseEnter = null
-      this.renderCircle.onMouseLeave = null
+      // this.renderCircle.onMouseEnter = this.onMouseEnter
+      // this.renderCircle.onMouseLeave = this.onMouseLeave
       
       for (let i = 1; i < g.length; i++) {
         let c = g[i].getCircle()
         this.renderCircle = this.renderCircle.unite(c, { insert: false })
       }
 
-      this.shape.addChild(this.renderCircle)
+      this.clipCircle = this.renderCircle.clone({ insert: false })
+      // this.shape.addChild(this.renderCircle)
       // rthis.circ
       this.renderCircle.fillColor = this.circle.fillColor
       this.renderCircle.strokeColor = this.circle.strokeColor
-      this.renderCircle.strokeWidth = this.circle.strokeWidth      
-      this.shape.removeChildren(0)
-      this.shape.insertChild(0, this.renderCircle)
-      this.shape.sendToBack()
-      this.circle.bringToFront()
-      this.circle.fillColor = new paper.Color(1, 0, 0, 0.1)
+      this.renderCircle.strokeWidth = 1
+
+      const newWidth = Math.max(this.raster.size.width, this.renderCircle.bounds.width)
+
+      this.raster.size = new paper.Size(newWidth, newWidth)
+
+      this.shape.removeChildren()
+      this.shape.addChild(this.clipCircle)
+      this.shape.addChild(this.raster)
+      this.shape.addChild(this.renderCircle)      
+      this.shape.clipped = true
     }
     this._group = g
   }
   setRenders(r) {
-    return
     this.renders = r
     if (!r) {
       this.shape.opacity = 0
+      this.shape.sendToBack()
     } else {
       this.shape.opacity = 1
     }
