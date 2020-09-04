@@ -6,7 +6,7 @@ const rgb2three = (c) => {
 }
 
 export const gradients = {
-  tours: {
+  tours: () => {return {
     u_point1 : { type : "v2", value : new THREE.Vector2(0.8, 0.0) },
     u_color1 : { type: "v3", value: rgb2three(hex2rgb('#F99B82')) },
     u_radius1: { type: "f", value: 10 },
@@ -22,8 +22,8 @@ export const gradients = {
     u_point5 : { type : "v2", value : new THREE.Vector2(0.6, 0.95) },
     u_color5 : { type: "v3", value: rgb2three(hex2rgb('#93E5F9')) },
     u_radius5: { type: "f", value: 10 },
-  },
-  about: {
+  }},
+  about: () => { return {
     u_point1 : { type : "v2", value : new THREE.Vector2(0.05, 0.55) },
     u_color1 : { type: "v3", value: rgb2three(hex2rgb('#0F0C7A')) },
     u_radius1: { type: "f", value: 50 },
@@ -39,8 +39,8 @@ export const gradients = {
     u_point5 : { type : "v2", value : new THREE.Vector2(1.1, 0.9) },
     u_color5 : { type: "v3", value: rgb2three(hex2rgb('#FFB31A')) },
     u_radius5: { type: "f", value: 1 },
-  },
-  book: {
+  }},
+  book: () => { return {
     u_point1 : { type : "v2", value : new THREE.Vector2(0.65, 0.15) },
     u_color1 : { type: "v3", value: rgb2three(hex2rgb('#F6AB3B')) },
     u_radius1: { type: "f", value: -100 },
@@ -56,8 +56,8 @@ export const gradients = {
     u_point5 : { type : "v2", value : new THREE.Vector2(0.1, -0.4) },
     u_color5 : { type: "v3", value: rgb2three(hex2rgb('#60D9B7')) },
     u_radius5: { type: "f", value: 1 },
-  },
-  watch: {
+  }},
+  watch: () => { return {
     u_point1 : { type : "v2", value : new THREE.Vector2(0.15, 0.85) },
     u_color1 : { type: "v3", value: rgb2three(hex2rgb('#FFB71C')) },
     u_radius1: { type: "f", value: 100 },
@@ -73,8 +73,8 @@ export const gradients = {
     u_point5 : { type : "v2", value : new THREE.Vector2(-0.4, -0.4) },
     u_color5 : { type: "v3", value: rgb2three(hex2rgb('#B9DAB1')) },
     u_radius5: { type: "f", value: -100 },
-  },
-  faq: {
+  }},
+  faq: () => { return {
     u_point1 : { type : "v2", value : new THREE.Vector2(0.15, 0.85) },
     u_color1 : { type: "v3", value: rgb2three(hex2rgb('#A59AFF')) },
     u_radius1: { type: "f", value: 100 },
@@ -90,5 +90,22 @@ export const gradients = {
     u_point5 : { type : "v2", value : new THREE.Vector2(-0.4, -0.4) },
     u_color5 : { type: "v3", value: rgb2three(hex2rgb('#FFAA84')) },
     u_radius5: { type: "f", value: -100 },
-  },
+  }},
+  home: () => { return {
+    u_point1 : { type : "v2", value : new THREE.Vector2(0.75, 0.1) },
+    u_color1 : { type: "v3", value: rgb2three(hex2rgb('#E8F848')) },
+    u_radius1: { type: "f", value: -50 },
+    u_point2 : { type : "v2", value : new THREE.Vector2(0.8, 0.85) },
+    u_color2 : { type: "v3", value: rgb2three(hex2rgb('#33B8F2')) },
+    u_radius2: { type: "f", value: 0 },
+    u_point3 : { type : "v2", value : new THREE.Vector2(0.77, 0.5) },
+    u_color3 : { type: "v3", value: rgb2three(hex2rgb('#173BAD')) },
+    u_radius3: { type: "f", value: 200 },
+    u_point4 : { type : "v2", value : new THREE.Vector2(0.1, 0.85) },
+    u_color4 : { type: "v3", value: rgb2three(hex2rgb('#FFD1E2')) },
+    u_radius4: { type: "f", value: 0 },
+    u_point5 : { type : "v2", value : new THREE.Vector2(0.1, 0.15) },
+    u_color5 : { type: "v3", value: rgb2three(hex2rgb('#CCD8FF')) },
+    u_radius5: { type: "f", value: 0 },
+  }}
 }
