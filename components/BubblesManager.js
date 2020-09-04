@@ -116,16 +116,11 @@ class Main extends React.Component {
     const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
     const cornerSize = new paper.Size(20, 20);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
-    // this._frame.strokeColor = 'white'
-    // this._frame.strokeWidth = 1
-
-    // Circle Example
-    // this.textOnPath = createAlignedText("The #1 VR Tour Agency", this._frame, { fontSize: 24, fillColor: 'white' })
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
       fontSize: 17, 
       fillColor: 'white',
       fontFamily: 'Graphik-Regular'
-    })
+    }, 1)
     this.textOffset = 0
   }
   drawText = () => {
@@ -134,8 +129,14 @@ class Main extends React.Component {
   }
 
   draw = (evt) => {
-    this.drawBubbles(evt)
+    if (!this._frameCount) {
+      this._frameCount = 0
+    }
+    this._frameCount++
     this.drawText(evt)
+
+    if (this._frameCount % 2 != 0) return
+    this.drawBubbles(evt)
   }
 
   componentDidMount() {

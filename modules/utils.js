@@ -90,6 +90,9 @@ export const createAlignedText = (str, path, style, reps = 20) => {
   }
 }
 
+const PATH_POINT_CACHE = {}
+const PATH_TANGENT_CACHE = {}
+
 export const updateAlignedText = (glyphTexts, xOffsets, path, offset, speed = -1) => {
   for (var i = 0; i < glyphTexts.length; i++) {
     var centerOffs = xOffsets[i] + offset;
@@ -103,15 +106,20 @@ export const updateAlignedText = (glyphTexts, xOffsets, path, offset, speed = -1
     if (centerOffs === undefined) {
         glyphTexts[i].remove();
     } else {
-        var pathPoint = path.getPointAt(centerOffs);
+        if (!PATH_POINT_CACHE[centerOffs]) PATH_POINT_CACHE[centerOffs] = path.getPointAt(centerOffs);
+
+        if (!PATH_TANGENT_CACHE[centerOffs]) PATH_TANGENT_CACHE[centerOffs] = path.getTangentAt(centerOffs);
+        if (!PATH_TANGENT_CACHE[(centerOffs + path.length - speed) % path.length]) PATH_TANGENT_CACHE[(centerOffs + path.length - speed) % path.length] = path.getTangentAt((centerOffs + path.length - speed) % path.length);
+
+        var pathPoint = PATH_POINT_CACHE[centerOffs]
         glyphTexts[i].point = pathPoint;
         if (speed > 0) {
-          var oldTan = path.getTangentAt((centerOffs + path.length - speed) % path.length); 
-          var tan = path.getTangentAt(centerOffs); 
+          var oldTan = PATH_TANGENT_CACHE[(centerOffs + path.length - speed) % path.length]; 
+          var tan = PATH_TANGENT_CACHE[centerOffs]; 
           // console.log(centerOffs, offset, tan.angle, oldTan.angle)
-          glyphTexts[i].rotate(tan.angle - oldTan.angle, pathPoint);  
+          if (tan.angle != oldTan.angle) glyphTexts[i].rotate(tan.angle - oldTan.angle, pathPoint);  
         } else {
-          var tan = path.getTangentAt(centerOffs); 
+          var tan = PATH_TANGENT_CACHE[centerOffs]; 
           glyphTexts[i].rotate(tan.angle, pathPoint);  
         }
     }
@@ -126,4 +134,19 @@ const createPointText = (str, style) => {
     text[k] = style[k]
   })
   return text;
+}
+
+export const hex2rgb = (hex) => {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+      return r + r + g + g + b + b;
+  });
+
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+  } : null;
 }
