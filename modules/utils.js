@@ -59,7 +59,7 @@ export const createAlignedText = (str, path, style, reps = 20) => {
   if (str && str.length > 0 && path) {
     // create PointText object for each glyph
     var glyphTexts = [];
-    for (var i = 0; i < str.length; i++) {
+    for (var i = 0; i < str.length; i+=1) {
         glyphTexts[i] = createPointText(str.substring(i, i+1), style);
         glyphTexts[i].justification = "center";
     }
@@ -78,7 +78,7 @@ export const createAlignedText = (str, path, style, reps = 20) => {
     for (let i = 1; i < reps; i++) {
       let reminder = Math.floor(path.length) % reps
       let currOffset = Math.floor(path.length / reps) * i + (i <= reminder)
-      for (let j = 0; j < str.length; j++) {
+      for (let j = 0; j < str.length; j+=1) {
         xOffsets.push(xOffsets[j] + currOffset)
         glyphTexts.push(createPointText(str.substring(j, j+1), style))
         glyphTexts[glyphTexts.length - 1].justification = "center"

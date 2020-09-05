@@ -89,6 +89,13 @@ export default class Bubble {
     this.startHoverTimestamp = performance.now()  
 
     if (this.renderModeGroup) {
+      const bounds = this.renderCircle.bounds.clone()
+      bounds.x -= bounds.width / 2
+      bounds.y -= bounds.height / 2
+      bounds.width += 1 * bounds.width
+      bounds.height += 1 * bounds.height
+      this.raster.fitBounds(bounds, true)
+
       this._group.forEach(b => {
         b.isMoving = false
         b.isHovered = true
@@ -241,13 +248,6 @@ export default class Bubble {
       this.shape.addChild(this.clipCircle)
       this.shape.addChild(this.raster)
       this.shape.addChild(this.renderCircle)      
-
-      const bounds = this.renderCircle.bounds.clone()
-      bounds.x -= bounds.width / 2
-      bounds.y -= bounds.height / 2
-      bounds.width += 1 * bounds.width
-      bounds.height += 1 * bounds.height
-      this.raster.fitBounds(bounds, true)
 
       this.shape.clipped = true
     }

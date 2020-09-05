@@ -14,6 +14,7 @@ import Image8 from '../static/img/splash/8.png'
 
 const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8]
 
+const TEXT_REPETITION = 20
 const MAX_BUBBLES = 15
 const INITIAL_BUBBLES = 10
 const SPAWN_TIME_LOWER_BOUND_S = 1
@@ -120,10 +121,11 @@ class Main extends React.Component {
       fontSize: 17, 
       fillColor: 'white',
       fontFamily: 'Graphik-Regular'
-    }, 1)
+    }, TEXT_REPETITION)
     this.textOffset = 0
   }
   drawText = () => {
+    // this.textOffset += (TEXT_SPEED * this._frameTime / 16.0)
     this.textOffset += TEXT_SPEED
     updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
   }
@@ -131,8 +133,13 @@ class Main extends React.Component {
   draw = (evt) => {
     if (!this._frameCount) {
       this._frameCount = 0
+      this._frameTime = 16
+      this._frameTimestamp = performance.now()
+    } else {
+      this._frameCount++
+      this._frameTime = performance.now() - this._frameTimestamp
+      this._frameTimestamp = performance.now()  
     }
-    this._frameCount++
     this.drawText(evt)
 
     if (this._frameCount % 2 != 0) return
