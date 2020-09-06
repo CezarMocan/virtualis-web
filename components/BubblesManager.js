@@ -121,7 +121,7 @@ class Main extends React.Component {
   drawText = () => {
     // this.textOffset += (TEXT_SPEED * this._frameTime / 16.0)
     this.textOffset += TEXT_SPEED
-    updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
+    // updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
   }
 
   draw = (evt) => {
@@ -142,7 +142,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.spawnInitialBubbles()
-    this.initializeText()
+    // this.initializeText()
   }
   render() {
     return (
