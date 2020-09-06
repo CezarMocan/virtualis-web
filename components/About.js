@@ -77,18 +77,18 @@ class Main extends React.Component {
 
           <h3 className="centered">Contact Us</h3>
             <div className="team-grid no-margin-bottom">
-              <div className="team-grid-item small-margin center-content">
+              <div className="team-grid-item no-side-margin center-content">
                 <a href={"tel:" + about.contact.tel}>  
                   <div className="contact-item-container"><p className="large centered">{about.contact.tel}</p></div>
                 </a>
               </div>
-              <div className="team-grid-item small-margin center-content">
+              <div className="team-grid-item no-side-margin center-content">
                 <a href={"mailto:" + about.contact.email}>
                   <div className="contact-item-container"><p className="large centered">{about.contact.email}</p></div>
                 </a>
               </div>
-              <div className="team-grid-item small-margin center-content">
-                <a href={"https://www.instagram.com/" + about.contact.instagram}>
+              <div className="team-grid-item no-side-margin center-content">
+                <a href={"https://www.instagram.com/" + about.contact.instagram} target="_blank">
                   <div className="contact-item-container"><p className="large centered">@{about.contact.instagram}</p></div>
                 </a>
               </div>

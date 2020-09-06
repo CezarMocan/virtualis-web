@@ -14,7 +14,7 @@ import Image8 from '../static/img/splash/8.png'
 
 const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8]
 
-const TEXT_REPETITION = 20
+const TEXT_REPETITION = 1
 const MAX_BUBBLES = 15
 const INITIAL_BUBBLES = 10
 const SPAWN_TIME_LOWER_BOUND_S = 1
@@ -41,12 +41,6 @@ class Main extends React.Component {
     let r = random(MIN_BUBBLE_RADIUS, MAX_BUBBLE_RADIUS)
     let y = onScreen ? random(0, this.height) : random(this.height + r, this.height + 2 * r)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
-
-    // x = 50 * B_ID
-    // y = 50 * B_ID
-    // r = 10
-    // B_ID++
-
     return new Bubble(x, y, r, IMAGES[index])
   }
   spawnInitialBubbles() {
@@ -154,7 +148,6 @@ class Main extends React.Component {
     return (
       <div className="splash-bubbles">
         <canvas id="bubble-canvas" resize="true" ref={this.setupCanvas}></canvas>
-        <img id="bubbles-image-1" className="hidden" src={Image1}/>
       </div>
     )
   }

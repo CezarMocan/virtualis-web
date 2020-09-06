@@ -24,5 +24,19 @@ module.exports = {
       ],
       button: true
     },
+  ],
+  testimonials: [
+    {
+      quote: '\"Lorem ipsum dolor\nsit amet, consect\ndeutuer adipiscin\"',
+      author: 'Meowzers'
+    },
+    {
+      quote: '\"Lorem ipsum dolor sit\namet, consect deutuer\nadipiscin consec lorem\nipsumadipiscin consect\ndetuer adipiscin\"',
+      author: 'MeowMeow Meow'
+    },
+    {
+      quote: '\"Lorem ipsum\ndolor\"',
+      author: 'Mr. M'
+    },
   ]
 }
