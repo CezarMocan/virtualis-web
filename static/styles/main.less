@@ -52,7 +52,8 @@ a {
   cursor: pointer;
 
   .small-logo {
-    height: 2.8rem;
+    max-height: 2.8rem;
+    max-width: 50%; //~"calc(100% - 250px)";
   }  
 }
 
@@ -163,19 +164,25 @@ a {
   .team-grid-item {
     flex: 1;
     margin: 40px 50px;
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 1000px) {
       margin: 20px 5px;
     }
     &.small-margin {
       margin: 40px 50px;
-      @media screen and (max-width: 500px) {
-        margin: 20px 5px;
+      @media screen and (max-width: 1000px) {
+        margin: 20px 10px;
       }  
     }
     &.no-side-margin {
       margin: 40px 0;
-      @media screen and (max-width: 500px) {
+      @media screen and (max-width: 1000px) {
         margin: 20px 0;
+      }  
+    }
+    &.grid-3 {
+      margin: 40px 25px;
+      @media screen and (max-width: 1000px) {
+        margin: 20px 10px;
       }  
     }
 
@@ -191,6 +198,10 @@ a {
   border: 1px solid @color-light;
   border-radius: 50px;
   padding: 0 65px;
+  @media only screen and (max-width: 500px) {
+    border-radius: 30px;
+    padding: 0 30px;
+  }
   display: inline-block;
   cursor: pointer;
   transition: background-color 0.35s ease-in-out;

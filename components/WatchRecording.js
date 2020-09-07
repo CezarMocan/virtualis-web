@@ -19,10 +19,11 @@ class WatchRecording extends React.Component {
       "interactive": hasRecording,
       "with-background": open
     })
-    const streamWidth = windowWidth * 0.83 - 290;
+    const streamWidth = windowWidth * 0.83 - ((windowWidth > 500) ? 290 : 30)
     const streamHeight = streamWidth * 9 / 16
+    const containerHeight = windowWidth > 1000 ? 80 : 55
     return (
-      <div className={containerCls} onClick={this.onClick} style={{height: open ? streamHeight + 150 : 80}}>
+      <div className={containerCls} onClick={this.onClick} style={{height: open ? streamHeight + 150 : containerHeight}}>
         <div className="date-time-container">
           <p className="large">{date}</p>
           <p className="large">{time}</p>

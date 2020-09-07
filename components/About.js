@@ -55,19 +55,19 @@ class Main extends React.Component {
 
             <h3 className="centered">Meet the Team</h3>
             <div className="team-grid no-margin-bottom">
-              <div className="team-grid-item small-margin">
+              <div className="team-grid-item grid-3 small-margin">
                 <h4>{about.emily.name}</h4>
                 { about.emily.bio.map(p => <p className="small">{p}</p>) }
                 <p className="small"><a href={about.emily.website} target="_blank">{about.emily.website}</a></p>
               </div>
 
-              <div className="team-grid-item small-margin">
+              <div className="team-grid-item grid-3 small-margin">
                 <h4>{about.james.name}</h4>
                 { about.james.bio.map(p => <p className="small">{p}</p>) }
                 <p className="small"><a href={about.james.website} target="_blank">{about.james.website}</a></p>
               </div>
 
-              <div className="team-grid-item small-margin">
+              <div className="team-grid-item grid-3 small-margin">
                 <h4>{about.cezar.name}</h4>
                 { about.cezar.bio.map(p => <p className="small">{p}</p>) }
                 <p className="small"><a href={about.cezar.website} target="_blank">{about.cezar.website}</a></p>

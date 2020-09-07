@@ -19,8 +19,8 @@ const MAX_BUBBLES = 12
 const INITIAL_BUBBLES = 8
 const SPAWN_TIME_LOWER_BOUND_S = 1
 const SPAWN_TIME_UPPER_BOUND_S = 3
-const MAX_BUBBLE_RADIUS = 120
-const MIN_BUBBLE_RADIUS = 40
+const MAX_BUBBLE_RADIUS = 0.1
+const MIN_BUBBLE_RADIUS = 0.03
 
 const TEXT_SPEED = 1
 
@@ -38,7 +38,7 @@ class Main extends React.Component {
   }
   spawnBubble(onScreen = false) {
     let x = random(0, this.width)
-    let r = random(MIN_BUBBLE_RADIUS, MAX_BUBBLE_RADIUS)
+    let r = random(MIN_BUBBLE_RADIUS * this.width, MAX_BUBBLE_RADIUS * this.width)
     let y = onScreen ? random(0, this.height) : random(this.height + r, this.height + 2 * r)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
     return new Bubble(x, y, r, IMAGES[index])
@@ -107,12 +107,12 @@ class Main extends React.Component {
   }
 
   initializeText = () => {
-    const padding = 27
+    const padding = this.width > 500 ? 27 : 12
     const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
     const cornerSize = new paper.Size(20, 20);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
-      fontSize: 21, 
+      fontSize: this.width > 500 ? 21 : 13.5, 
       fillColor: 'white',
       fontFamily: 'Graphik-Regular'
     }, TEXT_REPETITION)
