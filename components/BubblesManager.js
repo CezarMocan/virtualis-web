@@ -14,13 +14,13 @@ import Image8 from '../static/img/splash/8.png'
 
 const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8]
 
-const TEXT_REPETITION = 1
-const MAX_BUBBLES = 15
-const INITIAL_BUBBLES = 10
+const TEXT_REPETITION = 100
+const MAX_BUBBLES = 12
+const INITIAL_BUBBLES = 8
 const SPAWN_TIME_LOWER_BOUND_S = 1
 const SPAWN_TIME_UPPER_BOUND_S = 3
-const MAX_BUBBLE_RADIUS = 75
-const MIN_BUBBLE_RADIUS = 20
+const MAX_BUBBLE_RADIUS = 120
+const MIN_BUBBLE_RADIUS = 40
 
 const TEXT_SPEED = 1
 
@@ -112,15 +112,15 @@ class Main extends React.Component {
     const cornerSize = new paper.Size(20, 20);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
-      fontSize: 17, 
+      fontSize: 21, 
       fillColor: 'white',
       fontFamily: 'Graphik-Regular'
     }, TEXT_REPETITION)
     this.textOffset = 0
   }
   drawText = () => {
-    // this.textOffset += (TEXT_SPEED * this._frameTime / 16.0)
-    this.textOffset += TEXT_SPEED
+    this.textOffset += (TEXT_SPEED * this._frameTime / 16.0)
+    // this.textOffset += TEXT_SPEED
     updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
   }
 
@@ -131,7 +131,7 @@ class Main extends React.Component {
       this._frameTimestamp = performance.now()
     } else {
       this._frameCount++
-      this._frameTime = performance.now() - this._frameTimestamp
+      this._frameTime = this._frameTime * 0.9 + (performance.now() - this._frameTimestamp) * 0.1
       this._frameTimestamp = performance.now()  
     }
     this.drawText(evt)

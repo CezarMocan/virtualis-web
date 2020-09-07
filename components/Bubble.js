@@ -190,6 +190,11 @@ export default class Bubble {
   }
   remove() {
     this.shape.remove()
+    this.shape.onMouseEnter = null
+    this.shape.onMouseLeave = null
+    this.circle.remove()
+    this.clipCircle.remove()
+    this.renderCircle.remove()
   }
   getX() {
     return this.circle.position.x

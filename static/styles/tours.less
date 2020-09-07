@@ -39,6 +39,10 @@
   .tour-card-column-about {
     flex: 2;
     padding-right: 40px;
+    @media screen and (max-width: 500px) {
+      padding-right: 0;
+    }
+
   }
   .tour-card-column-schedule {
     flex: 1;
@@ -63,6 +67,10 @@
   .coming-soon-tour-container {
     flex: 1;
     margin: 20px 30px -30px 30px;
+    @media screen and (max-width: 500px) {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
 
     .small-tour-card-column {
       &.image {
