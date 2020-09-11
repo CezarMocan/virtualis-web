@@ -1,34 +1,85 @@
 import React from 'react'
 import Link from 'next/link'
+import classnames from 'classnames'
 import ShallowLink from './ShallowLink'
 import { withMainContext } from '../context/MainContext'
 import IconWatch from '../static/img/livestream_icon_globe.png'
+import IconMenu from '../static/img/mobile-menu-icon.png'
+import IconClose from '../static/img/mobile-close-icon.png'
+import Logo from './Logo'
+
+const FADE_TRANSITION_DURATION = 500
 
 class Main extends React.Component {
   state = {
-    open: false
+    open: false,
+    visible: false,
   }
   onMenuToggle = () => {
-    this.setState({ open: !this.state.open })
+    if (this.state.open) {
+      this.setState({ visible: false }, () => {
+        setTimeout(() => {
+          this.setState({ open: false })
+        }, FADE_TRANSITION_DURATION)
+      })  
+    } else {
+      this.setState({ open: true }, () => {
+        setTimeout(() => {
+          this.setState({ visible: true })
+        }, 50)
+        
+      })
+    }
   }
   render() {
-    const { url } = this.props
-    const { open } = this.state
+    const { url, windowWidth } = this.props
+    const { open, visible } = this.state
+    const menuCls = classnames({
+      'menu-options-container': true,
+      'fading': true,
+      'visible': visible
+    })
+    const mobileMenuCls = classnames({
+      'mobile-menu-container': true,
+      'fading': true,
+      'visible': visible
+    })
+    const hasMobileMenu = (windowWidth <= 750)
     return (
       <>
-        <div className="menu-container">
-          <div className="menu-button" onClick={this.onMenuToggle}><h3 className="noselect menu-link">Menu</h3></div>
-          { open && 
-          <div className="menu-options-container">
-            {/* <ShallowLink href="/home"><div className="menu-button menu-list-button"><h3 className="noselect">Home</h3></div></ShallowLink> */}
-            <ShallowLink href="/tours" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Tour Packages</h3></div></ShallowLink>
-            <ShallowLink href="/book" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Book a Tour</h3></div></ShallowLink>
-            {/* <ShallowLink href="/watch" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Watch Now</h3></div></ShallowLink> */}
-            <ShallowLink href="/about" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">About</h3></div></ShallowLink>
-            <ShallowLink href="/faq" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">FAQ</h3></div></ShallowLink>
+        { hasMobileMenu &&
+          <div className="mobile-menu-button-container" onClick={this.onMenuToggle}>
+            <img src={IconMenu}/>
           </div>
-          }
-        </div>
+        }
+        { hasMobileMenu && open && 
+            <div className={mobileMenuCls}>
+              <Logo className="small-logo"/>
+              <div className="fake-border">
+                <ShallowLink href="/home" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Home</h3></div></ShallowLink>
+                <ShallowLink href="/tours" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Tour Packages</h3></div></ShallowLink>
+                <ShallowLink href="/book" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Book a Tour</h3></div></ShallowLink>
+                <ShallowLink href="/watch" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Watch</h3></div></ShallowLink>
+                <ShallowLink href="/about" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">About</h3></div></ShallowLink>
+                <ShallowLink href="/faq" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">FAQ</h3></div></ShallowLink>
+              </div>
+            </div>
+        }
+        { !hasMobileMenu && 
+          <div className="menu-container">
+            <div className="menu-button" onClick={this.onMenuToggle}><h3 className="noselect menu-link">Menu</h3></div>
+            { open && 
+              <div className={menuCls}>
+                {/* <ShallowLink href="/home"><div className="menu-button menu-list-button"><h3 className="noselect">Home</h3></div></ShallowLink> */}
+                <ShallowLink href="/tours" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Tour Packages</h3></div></ShallowLink>
+                <ShallowLink href="/book" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Book a Tour</h3></div></ShallowLink>
+                {/* <ShallowLink href="/watch" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Watch Now</h3></div></ShallowLink> */}
+                <ShallowLink href="/about" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">About</h3></div></ShallowLink>
+                <ShallowLink href="/faq" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">FAQ</h3></div></ShallowLink>
+              </div>
+            }
+          </div>
+        }
         <div className="menu-icon-watch">
           <ShallowLink href="/watch"><img src={IconWatch}/></ShallowLink>
         </div>
@@ -39,5 +90,7 @@ class Main extends React.Component {
 
 export default withMainContext((context, props) => ({
   url: context.url,
-  router: context.router
+  router: context.router,
+  windowWidth: context.windowWidth,
+  windowHeight: context.windowHeight
 }))(Main)

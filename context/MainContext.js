@@ -9,6 +9,8 @@ export default class MainContextProvider extends React.Component {
         isMobile: null,
         url: null,
         router: null,
+        windowWidth: 1024,
+        windowHeight: 768,    
 
         action: this
     }    
@@ -29,9 +31,20 @@ export default class MainContextProvider extends React.Component {
       }
       const { url, router } = this.props
       this.setState({ 
-        isMobile, url, router,
+        isMobile, 
+        url, 
+        router,
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight,
         TwitchEmbedVideo: require('react-twitch-embed-video'),
-      })    
+      })
+      window.addEventListener('resize', this.onWindowResize)
+    }
+    onWindowResize = (e) => {
+      this.setState({ 
+        windowWidth: window.innerWidth,
+        windowHeight: window.innerHeight
+      })
     }
 
     render() {
