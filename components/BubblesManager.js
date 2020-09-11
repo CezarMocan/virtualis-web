@@ -41,7 +41,10 @@ class Main extends React.Component {
     let r = random(MIN_BUBBLE_RADIUS * this.width, MAX_BUBBLE_RADIUS * this.width)
     let y = onScreen ? random(0, this.height) : random(this.height + r, this.height + 2 * r)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
-    return new Bubble(x, y, r, IMAGES[index])
+    const isMobile = this.props.isMobile
+    const b = new Bubble(x, y, r, IMAGES[index], isMobile)
+    b.setMobileTapCallback(this.onBubbleMobileTap)
+    return b
   }
   spawnInitialBubbles() {
     for (let i = 0; i < INITIAL_BUBBLES; i++) {
@@ -49,8 +52,14 @@ class Main extends React.Component {
       this.bubbles.push(b)
     }
     this.updateNextSpawnTime()
+  }  
+  onBubbleMobileTap = (id) => {
+    if (!this.props.isMobile) return
+    this.bubbles.forEach(b => {
+      if (b.id == id) return
+      if (b.isHovered) b.contract()
+    })
   }
-
   setupCanvas = (c) => {
     this._canvas = c
     paper.setup(this._canvas)
@@ -155,5 +164,6 @@ class Main extends React.Component {
 
 export default withMainContext((context, props) => ({
   url: context.url,
-  router: context.router
+  router: context.router,
+  isMobile: context.isMobile
 }))(Main)

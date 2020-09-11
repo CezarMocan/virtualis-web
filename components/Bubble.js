@@ -9,10 +9,11 @@ const RASTER_LOAD_SIZE = 768
 let UID = 0
 
 export default class Bubble {
-  constructor(x, y, r, imageUrl) {
+  constructor(x, y, r, imageUrl, isMobile = true) {
     this.r = r
     this.id = UID++
     this.imageUrl = imageUrl
+    this.isMobile = isMobile
 
     this.raster = new paper.Raster()
     this.raster.opacity = 0
@@ -56,6 +57,7 @@ export default class Bubble {
 
     this.shape.onMouseEnter = this.onMouseEnter
     this.shape.onMouseLeave = this.onMouseLeave
+    this.shape.onMouseDown = this.onMouseDown
     this.shape.onFrame = this.update
 
     // this.acceleration = new paper.Point(random(-0.1, 0.1), random(-0.3, -0.1))
@@ -74,6 +76,9 @@ export default class Bubble {
 
     this._group = [0]
   }
+  setMobileTapCallback = (c) => {
+    this.mobileTapCallback = c
+  }
   onImageLoad = () => {
     this.raster.size = new paper.Size(RASTER_LOAD_SIZE, RASTER_LOAD_SIZE)
     this.raster.position = new paper.Point(this.circle.position.x, this.circle.position.y)
@@ -83,6 +88,23 @@ export default class Bubble {
     this.raster.opacity = 0
   }
   onMouseEnter = (e) => {
+    if (this.isMobile) return
+    this.expand(e)
+  }
+  onMouseLeave = (e) => {
+    if (this.isMobile) return
+    this.contract(e)
+  }
+  onMouseDown = (e) => {
+    if (!this.isMobile) return
+    if (this.isHovered) {
+      this.contract()
+    } else {
+      this.expand()
+    }
+    if (this.mobileTapCallback) this.mobileTapCallback(this.id)
+  }
+  expand = (e) => {
     if (!this.renders) return
     this.isMoving = false
     this.isHovered = true
@@ -102,7 +124,7 @@ export default class Bubble {
       })
     }
   }
-  onMouseLeave = (e) => {
+  contract = (e) => {
     if (!this.renders) return
     this.isMoving = true
     this.isHovered = false
@@ -122,8 +144,8 @@ export default class Bubble {
     if (this.circle.position.y + 2 * this.r < 0) {
       this.isDead = true
       this.shape.onFrame = null
-      this.circle.onMouseEnter = null
-      this.circle.onMouseLeave = null
+      this.shape.onMouseEnter = null
+      this.shape.onMouseLeave = null
       return
     }
 
