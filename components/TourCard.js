@@ -11,29 +11,32 @@ class TourCard extends React.Component {
             <img src={image}/>
           </div>
           <div className="tour-card-column text">
-            <h1 style={{margin: '5px 0'}}>{title}</h1>
-            <p className="small">{duration}</p>
+            <div className="text-column-content">
+              <h1 style={{margin: '5px 0'}}>{title}</h1>
+              <p className="small">{duration}</p>
 
-            <div className="tour-card-column-content">
-              <div className="tour-card-column-about">
-                <h5>About</h5>
-                <p className="small no-margin">{about}</p>
-              </div>
+              <div className="tour-card-column-content">
+                <div className="tour-card-column-about">
+                  <h5>About</h5>
+                  <p className="small no-margin">{about}</p>
+                </div>
 
-              <div className="tour-card-column-schedule">
-                <h5>Schedule</h5>
-                { schedule.map(s => {
-                  return (
-                    <div className="schedule-item-container">
-                      <p className="small no-margin">{s.date}</p>
-                      <p className="small no-margin">{s.time}</p>
-                    </div>
-                  )
-                })}
+                <div className="tour-card-column-schedule">
+                  <h5>Schedule</h5>
+                  { schedule.map(s => {
+                    return (
+                      <div className="schedule-item-container">
+                        <p className="small no-margin">{s.date}</p>
+                        <p className="small no-margin">{s.time}</p>
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             </div>
-
-            <ShallowLink href="/book"><div className="menu-button small" style={{marginLeft: -5, marginTop: 5}}><h4 className="noselect">Book Tour</h4></div></ShallowLink>
+            <div className="book-tour-container">
+              <ShallowLink href="/book"><div className="menu-button small" style={{marginLeft: -5, marginTop: 5}}><h4 className="noselect">Book Tour</h4></div></ShallowLink>
+            </div>
           </div>
         </div>
       </div>

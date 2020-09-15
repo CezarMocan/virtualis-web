@@ -118,12 +118,12 @@ class Main extends React.Component {
   initializeText = () => {
     const padding = this.width > 500 ? 27 : 12
     const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
-    const cornerSize = new paper.Size(20, 20);
+    const cornerSize = new paper.Size(40, 40);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
       fontSize: this.width > 500 ? 21 : 13.5, 
       fillColor: 'white',
-      fontFamily: 'Graphik-Regular'
+      fontFamily: 'Graphik-Bold'
     }, TEXT_REPETITION)
     this.textOffset = 0
   }
