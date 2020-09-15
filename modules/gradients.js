@@ -11,7 +11,7 @@ export const gradients = {
     u_color1 : { type: "v3", value: rgb2three(hex2rgb('#F99B82')) },
     u_radius1: { type: "f", value: 1 },
     u_point2 : { type : "v2", value : new THREE.Vector2(0., 0.1) },
-    u_color2 : { type: "v3", value: rgb2three(hex2rgb('#93E5F9')) },
+    u_color2 : { type: "v3", value: rgb2three(hex2rgb('#0052C9')) },
     u_radius2: { type: "f", value: 1 },
     u_point3 : { type : "v2", value : new THREE.Vector2(0.93, 0.55) },
     u_color3 : { type: "v3", value: rgb2three(hex2rgb('#00A4ED')) },
@@ -20,7 +20,7 @@ export const gradients = {
     u_color4 : { type: "v3", value: rgb2three(hex2rgb('#E64FEB')) },
     u_radius4: { type: "f", value: 1 },
     u_point5 : { type : "v2", value : new THREE.Vector2(0.6, 0.95) },
-    u_color5 : { type: "v3", value: rgb2three(hex2rgb('#93E5F9')) },
+    u_color5 : { type: "v3", value: rgb2three(hex2rgb('#0052C9')) },
     u_radius5: { type: "f", value: 1 },
   }},
   about: () => { return {
