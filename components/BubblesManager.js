@@ -123,6 +123,7 @@ class Main extends React.Component {
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
       fontSize: this.width > 500 ? 21 : 13.5, 
       fillColor: 'white',
+      // fontWeight: 'bold',
       fontFamily: 'Graphik-Bold'
     }, TEXT_REPETITION)
     this.textOffset = 0
@@ -151,6 +152,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.spawnInitialBubbles()
+    console.log('initialize text: ', performance.now())
     this.initializeText()
   }
   render() {

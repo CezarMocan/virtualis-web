@@ -1,6 +1,5 @@
 import React from 'react'
-
-const sleep = (s) => new Promise((res, rej) => setTimeout(res, s * 1000))
+import { sleep } from '../modules/utils'
 
 const MainContext = React.createContext()
 
@@ -10,8 +9,8 @@ export default class MainContextProvider extends React.Component {
         url: null,
         router: null,
         windowWidth: 1024,
-        windowHeight: 768,    
-
+        windowHeight: 768,
+        loaded: false,  
         action: this
     }    
 
@@ -22,7 +21,11 @@ export default class MainContextProvider extends React.Component {
       }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+      if (document && document.fonts) {
+        await document.fonts.load('21pt "Graphik-Bold"')
+        await document.fonts.load('13.5pt "Graphik-Bold"')
+      }
       let isMobile = false; //initiate as false
       // device detection
       if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
@@ -37,6 +40,7 @@ export default class MainContextProvider extends React.Component {
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
         TwitchEmbedVideo: require('react-twitch-embed-video'),
+        loaded: true,
       })
       window.addEventListener('resize', this.onWindowResize)
     }
@@ -50,11 +54,12 @@ export default class MainContextProvider extends React.Component {
     render() {
         const context = { ...this.state }
         const { children } = this.props
+        const { loaded } = this.state
         if (context.url == null || context.url == '[slug]') return null
 
-        return (
+        return (           
             <MainContext.Provider value={context}>
-                { children }
+              { loaded && children }
             </MainContext.Provider>
         )
     }

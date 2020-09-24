@@ -50,11 +50,12 @@
 
   .tour-card-column-about {
     flex: 2;
-    // padding-right: 40px;
-    @media screen and (max-width: 500px) {
-      padding-right: 0;
+    &.margin-right {
+      padding-right: 40px;
+      @media screen and (max-width: 500px) {
+        padding-right: 0;
+      }  
     }
-
   }
   .tour-card-column-schedule {
     flex: 1;
@@ -71,6 +72,7 @@
 .coming-soon-tours-container {
   display: flex;
   flex-direction: row;
+  width: 100%;
 
   @media only screen and (max-width: 1000px) {
     flex-direction: column;
@@ -78,10 +80,15 @@
 
   .coming-soon-tour-container {
     flex: 1;
-    margin: 20px 25px -30px 25px;
+    margin: 20px 25px 30px 25px;
     @media screen and (max-width: 500px) {
       margin-left: 10px;
       margin-right: 10px;
+    }
+
+    .content-section {
+      height: 100%;
+      margin-bottom: 0;
     }
 
     .small-tour-card-column {
@@ -91,7 +98,7 @@
           width: 100%;
           min-height: 190px;
           object-fit: cover;
-          border-radius: 25px;
+          border-radius: 40px;
         }
       }
     }

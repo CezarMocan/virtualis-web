@@ -25,7 +25,7 @@ class Main extends React.Component {
     const maxR = MAX_BUBBLE_RADIUS * this.width
     let r = random(minR, maxR)
     let x = random(2 * r, this.width - 2 * r)
-    let y = prevY + r + 50
+    let y = prevY + 1.5 * r
     return new TestimonialBubble(x, y, text, r, Math.floor(random(5, 9)), this.width, this.height)
   }
   shuffleArray = (array) => {
@@ -35,7 +35,7 @@ class Main extends React.Component {
     }
   }
   componentDidMount() {
-    let prevY = 50
+    let prevY = -50
     this.shuffleArray(testimonials)
     for (let i = 0; i < testimonials.length; i++) {
       const b = this.spawnBubble(i, prevY, testimonials[i])

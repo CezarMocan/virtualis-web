@@ -1,10 +1,12 @@
 import paper, { Point, Size } from 'paper'
 
 export const random = (low, high) => (Math.random() * (high - low) + low)
+export const randomSgn = () => (Math.random() < 0.5 ? 1 : -1)
 export const valmap = (v, a, b, x, y) => {
   return ((v - a) / (b - a)) * (y - x) + x
 }
 export const clamp = (a, x, y) => (Math.min(y, Math.max(a, x)))
+export const sleep = (s) => new Promise((res, rej) => setTimeout(res, s * 1000))
 
 export const easeOutElastic = (x) => {
   const c4 = (2 * Math.PI) / 3;  
@@ -129,10 +131,10 @@ export const updateAlignedText = (glyphTexts, xOffsets, path, offset, speed = -1
 // create a PointText object for a string and a style
 const createPointText = (str, style) => {
   var text = new paper.PointText();
-  text.content = str;
   Object.keys(style).forEach(k => {
     text[k] = style[k]
   })
+  text.content = str;
   return text;
 }
 

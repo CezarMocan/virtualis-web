@@ -16,7 +16,7 @@ class TourCard extends React.Component {
               <p className="small">{duration}</p>
 
               <div className="tour-card-column-content">
-                <div className="tour-card-column-about">
+                <div className="tour-card-column-about margin-right">
                   <h5>About</h5>
                   <p className="small no-margin">{about}</p>
                 </div>
