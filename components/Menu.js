@@ -79,9 +79,8 @@ class Main extends React.Component {
             }
           </div>
         }
-        <div className="menu-icon-watch">
-          <ShallowLink href="/watch"><img src={IconWatch}/></ShallowLink>
-        </div>
+        
+          <ShallowLink href="/watch"><div className="menu-icon-watch"><img src={IconWatch}/></div></ShallowLink>        
       </>
     )
   }

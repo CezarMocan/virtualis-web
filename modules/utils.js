@@ -57,7 +57,16 @@ export const computeConnectedComponents = (graph) => {
   return { assignment, components }
 }
 
+let PATH_POINT_CACHE = {}
+let PATH_TANGENT_CACHE = {}
+
+export const clearCaches = () => {
+  PATH_POINT_CACHE = {}
+  PATH_TANGENT_CACHE = {}
+}
+
 export const createAlignedText = (str, path, style, reps = 20) => {
+  clearCaches()
   if (str && str.length > 0 && path) {
     // create PointText object for each glyph
     var glyphTexts = [];
@@ -91,9 +100,6 @@ export const createAlignedText = (str, path, style, reps = 20) => {
     return { glyphTexts, xOffsets }
   }
 }
-
-const PATH_POINT_CACHE = {}
-const PATH_TANGENT_CACHE = {}
 
 export const updateAlignedText = (glyphTexts, xOffsets, path, offset, speed = -1) => {
   for (var i = 0; i < glyphTexts.length; i++) {

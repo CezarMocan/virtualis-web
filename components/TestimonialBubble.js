@@ -110,7 +110,7 @@ export default class TestimonialBubble {
     this.velocity = { x: random(MIN_VELOCITY, MAX_VELOCITY) * randomSgn(), y: random(MIN_VELOCITY, MAX_VELOCITY) * randomSgn() }
     this.movementBounds = {
       x: 0, width: canvasWidth,
-      y: Math.max(0, y - 1.5 * r), height: Math.min(3 * r, canvasHeight - y + 1.5 * r)
+      y: Math.max(0, y - 1.3 * r), height: Math.min(2.8 * r, canvasHeight - y + 1.5 * r)
     }
   }
 
@@ -127,8 +127,8 @@ export default class TestimonialBubble {
     let dangerZoneXC = 1, dangerZoneYC = 1
     let dzX = Math.min(Math.abs(this.movementBounds.x - this.renderCircle.bounds.x), Math.abs(this.renderCircle.bounds.x + this.renderCircle.bounds.width - this.movementBounds.x - this.movementBounds.width))    
     let dzY = Math.min(Math.abs(this.movementBounds.y - this.renderCircle.bounds.y), Math.abs(this.renderCircle.bounds.y + this.renderCircle.bounds.height - this.movementBounds.y - this.movementBounds.height))    
-    if (dzX < 20) dangerZoneXC = Math.max(dzX / 20, 0.15)
-    if (dzY < 20) dangerZoneYC = Math.max(dzY / 20, 0.15)
+    if (dzX < 20) dangerZoneXC = Math.max(dzX / 20, 0.25)
+    if (dzY < 20) dangerZoneYC = Math.max(dzY / 20, 0.25)
 
     this.renderCircle.position.x += this.velocity.x * dangerZoneXC
     this.renderCircle.position.y += this.velocity.y * dangerZoneYC

@@ -49,6 +49,7 @@ class Main extends React.Component {
   render() {
     const { url } = this.props.url
     return (
+      <>
       <div className="page-container">        
         <Logo className="small-logo"/>
 
@@ -59,7 +60,7 @@ class Main extends React.Component {
                 <div className="content-section">
                   <h2>{t.title}</h2>
                   { t.content.map(p => <p>{p} </p>)}
-                  { t.button && <ShallowLink href="/join"><div className="menu-button small" style={{marginLeft: -5, marginTop: 5}}><h4 className="noselect">Watch Now</h4></div></ShallowLink> }
+                  { t.button && <ShallowLink href="/watch"><div className="menu-button small" style={{marginLeft: -5, marginTop: 5}}><h4 className="noselect">Watch Now</h4></div></ShallowLink> }
                 </div>    
               )
             })}
@@ -69,6 +70,8 @@ class Main extends React.Component {
           </div>
         </div>
       </div>
+      <div style={{height: 1, width: 1}}></div>
+      </>
     )
   }
 }

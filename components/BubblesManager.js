@@ -27,6 +27,7 @@ const TEXT_SPEED = 0.5
 let B_ID = 0
 
 class Main extends React.Component {
+  lastResizeTimerId = null
   graph = []
   bubbles = []
   nextSpawnTime = 0
@@ -116,19 +117,23 @@ class Main extends React.Component {
   }
 
   initializeText = () => {
+    this.textInitialized = false
+    console.log('initialize text')
     const padding = this.width > 500 ? 27 : 12
     const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
     const cornerSize = new paper.Size(40, 40);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
+    this.textOffset = 0
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
       fontSize: this.width > 500 ? 21 : 13.5, 
       fillColor: 'white',
       // fontWeight: 'bold',
       fontFamily: 'Graphik-Bold'
     }, TEXT_REPETITION)
-    this.textOffset = 0
+    this.textInitialized = true
   }
   drawText = () => {
+    if (!this.textOnPath || !this.textInitialized) return
     this.textOffset += (TEXT_SPEED * this._frameTime / 16.0)
     // this.textOffset += TEXT_SPEED
     updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
@@ -149,11 +154,24 @@ class Main extends React.Component {
     if (this._frameCount % 2 != 0) return
     this.drawBubbles(evt)
   }
-
+  onWindowResize = () => {
+    if (this.lastResizeTimerId != null) {
+      clearTimeout(this.lastResizeTimerId)
+      this.lastResizeTimerId = setTimeout(() => { this.initializeText(); this.lastResizeTimerId = null; }, 500)
+    } else {
+      if (this.textOnPath && this.textOnPath.glyphTexts) {
+        this.textOnPath.glyphTexts.forEach(g => g.remove())
+        this._frame.remove()
+        delete this.textOnPath
+        this.lastResizeTimerId = setTimeout(() => { this.initializeText(); this.lastResizeTimerId = null; }, 500)
+      }  
+    }
+  }
   componentDidMount() {
     this.spawnInitialBubbles()
     console.log('initialize text: ', performance.now())
     this.initializeText()
+    window.addEventListener('resize', this.onWindowResize)
   }
   render() {
     return (

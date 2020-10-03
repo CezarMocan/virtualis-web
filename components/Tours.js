@@ -10,9 +10,10 @@ class Main extends React.Component {
   render() {
     const { url } = this.props.url
     return (
+      <>
       <div className="page-container">
         <Logo className="small-logo"/>
-        <div className="page-content">
+        <div className="page-content wide">
           { tours.map(t => {
             return (
             <TourCard 
@@ -23,8 +24,6 @@ class Main extends React.Component {
               image={t.image}
            />)
           })}
-
-          <h1 className="centered">Coming Soon</h1>
 
           { comingSoonTours.map(row => {
             return (
@@ -48,6 +47,8 @@ class Main extends React.Component {
         </div>
         
       </div>
+      <div style={{height: 1, width: 1}}></div>
+      </>
     )
   }
 }

@@ -25,11 +25,11 @@
   border-radius: 100px;
   padding: 15px 50px;
   @media only screen and (max-width: 1000px) {
-    padding: 5px 35px;
+    padding: 5px 15px;
     border-radius: 35px;
   }
   @media only screen and (max-width: 500px) {
-    padding: 0px 25px;
+    padding: 0px 10px;
     border-radius: 25px;
   }
   &.open {
@@ -63,6 +63,16 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    p.large {
+      @media only screen and (max-width: 500px) {
+        font-size: 8.5pt;
+        line-height: 2.95;  
+      }
+      @media only screen and (max-width: 1000px) {
+        font-size: 10pt;
+        line-height: 2.3;
+      }
+    }
   }
 }
 

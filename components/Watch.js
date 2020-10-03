@@ -26,8 +26,9 @@ class Main extends React.Component {
   render() {
     const { url, TwitchEmbedVideo } = this.props
     const { windowWidth } = this.state
-    const streamWidth = 0.7 * windowWidth
+    const streamWidth = windowWidth > 500 ? (0.7 * windowWidth) : (0.87 * windowWidth)
     return (
+      <>
       <div className="page-container">
         <Logo className="small-logo"/>
         <div className="page-content">
@@ -81,6 +82,8 @@ class Main extends React.Component {
 
         </div>
       </div>
+      <div style={{height: 1, width: 1}}></div>
+      </>
     )
   }
 }

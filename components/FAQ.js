@@ -7,6 +7,7 @@ class Main extends React.Component {
   render() {
     const { url } = this.props.url
     return (
+      <>
       <div className="page-container">
         <Logo className="small-logo"/>
 
@@ -21,6 +22,8 @@ class Main extends React.Component {
           })}
         </div>
       </div>
+      <div style={{height: 1, width: 1}}></div>
+      </>
     )
   }
 }

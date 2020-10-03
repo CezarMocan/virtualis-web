@@ -33,6 +33,10 @@ a {
   border-radius: @border-radius;
   margin-bottom: 40px;
 
+  @media only screen and (max-width: 500px) {
+    border-radius: 25px;
+  }
+
   &.splash {
     height: ~"calc(100vh - 80px)";
     @media only screen and (max-width: 500px) {
@@ -54,6 +58,9 @@ a {
   .small-logo {
     max-height: 2.8rem;
     max-width: 50%; //~"calc(100% - 250px)";
+    @media only screen and (max-width: 300px) {
+      margin-top: 4px;
+    }  
   }  
 }
 
@@ -62,6 +69,11 @@ a {
   margin-left: 50px;
   margin-right: 50px;
   margin-bottom: 50px;
+  &.wide {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 125px;
+  }
   @media only screen and (max-width: 1000px) {
     margin-left: 20px;
     margin-right: 20px;  
