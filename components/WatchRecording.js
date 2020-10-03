@@ -12,7 +12,7 @@ class WatchRecording extends React.Component {
     this.setState({ open: !this.state.open })
   }
   render() {
-    const { date, time, hasRecording, twitchVideoId, windowWidth, uid, TwitchEmbedVideo } = this.props
+    const { date, time, hasRecording, twitchVideoId, windowWidth, uid, TwitchEmbedVideo, isPast } = this.props
     const { open } = this.state
     const containerCls = classnames({
       "watch-recording-container": true,
@@ -27,7 +27,9 @@ class WatchRecording extends React.Component {
       <div className={containerCls} onClick={this.onClick} style={{height: open ? streamHeight + 150 : containerHeight}}>
         <div className="date-time-container">
           <p className="large">{date}</p>
-          <p className="large">{time}</p>
+          { !hasRecording && <p className="large">{time}</p> }
+          { hasRecording && open && <div className="minus"></div> }
+          { hasRecording && !open && <div className="plus"></div> }
         </div>
         <div className="twitch-video-container">
           { hasRecording && TwitchEmbedVideo && <TwitchEmbedVideo

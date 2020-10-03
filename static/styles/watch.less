@@ -65,3 +65,29 @@
     justify-content: space-between;
   }
 }
+
+.minus {
+  height: 35px;
+  width: 35px;
+  border-bottom: 2px solid @color-light;
+  transform: translateY(-50%);
+  position: relative;
+}
+
+.plus {
+  height: 35px;
+  width: 35px;
+  border-bottom: 2px solid @color-light;
+  transform: translateY(-50%);
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 2px solid @color-light;
+    height: 35px;
+    width: 35px;
+    transform: translateY(50%) translateX(-50%);
+  }
+}

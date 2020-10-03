@@ -56,6 +56,7 @@ class Main extends React.Component {
                   hasRecording={s.hasRecording}
                   twitchVideoId={s.twitchVideoId}
                   windowWidth={windowWidth}
+                  isPast={false}
                 />
               )
             })}
@@ -72,6 +73,7 @@ class Main extends React.Component {
                   twitchVideoId={s.twitchVideoId}
                   windowWidth={windowWidth}
                   uid={index}
+                  isPast={true}
                 />
               )
             })}
