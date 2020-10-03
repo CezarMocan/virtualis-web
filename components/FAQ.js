@@ -13,7 +13,7 @@ class Main extends React.Component {
         <div className="page-content">
           { faq.map(f => {
             return (
-              <div className="content-section narrow bordered">
+              <div className="content-section narrow bordered faq">
                 <h1>{f.title}</h1>
                 { f.content.map(p => <p className="large">{p}</p>)}
               </div>  

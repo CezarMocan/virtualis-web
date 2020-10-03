@@ -36,12 +36,13 @@ class Main extends React.Component {
               autoplay
               channel={watch.liveTwitchChannel}
               //video="619925172"
-              height={streamWidth < 800 ? streamWidth : streamWidth * 9 / 16}
+              height={streamWidth * 9 / 16}
               muted={false}
               allowfullscreen={true}
               targetId="twitch-embed"
               width={streamWidth}
               theme="dark"
+              layout="video"
             /> }
           </div>
 

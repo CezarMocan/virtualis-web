@@ -17,7 +17,7 @@ class Main extends React.Component {
 
         <div className="page-content">
           <div className="content-section narrow">
-            { about.description.map(p => <p className="large centered">{p}</p>) }
+            { about.description.map(p => <p className="large">{p}</p>) }
           </div>
 
           <div className="team-container">
@@ -28,8 +28,8 @@ class Main extends React.Component {
 
                 <div className="team-member-centered-image">
                   <div className="team-member-image-container">
-                    <img className="team-member-image" src={about.lydia.image}/>
-                    <img className="team-member-image avatar" src={about.lydia.avatar}/>
+                    <img className="team-member-image" src={about.lydia.avatar}/>
+                    <img className="team-member-image avatar" src={about.lydia.image}/>
                   </div>
                 </div>
 
@@ -41,8 +41,8 @@ class Main extends React.Component {
               <div className="team-grid-item">
                 <div className="team-member-centered-image">
                   <div className="team-member-image-container">
-                    <img className="team-member-image" src={about.matt.image}/>
-                    <img className="team-member-image avatar" src={about.matt.avatar}/>
+                    <img className="team-member-image" src={about.matt.avatar}/>
+                    <img className="team-member-image avatar" src={about.matt.image}/>
                   </div>
                 </div>
 
@@ -52,31 +52,44 @@ class Main extends React.Component {
 
               </div>
             </div>
+          </div>
 
-            <h3 className="centered">Meet the Team</h3>
+          <div className="team-container">
             <div className="team-grid no-margin-bottom">
-              <div className="team-grid-item grid-3 small-margin">
-                <h4>{about.emily.name}</h4>
+              <div className="team-grid-item">
+                <h3 className="centered">{about.emily.name}</h3>
+                <p className="small centered no-margin-top">{about.emily.role}</p>
                 { about.emily.bio.map(p => <p className="small">{p}</p>) }
                 <p className="small"><a href={about.emily.website} target="_blank">{about.emily.website}</a></p>
               </div>
 
-              <div className="team-grid-item grid-3 small-margin">
-                <h4>{about.james.name}</h4>
+              <div className="team-grid-item">
+                <h3 className="centered">{about.james.name}</h3>
+                <p className="small centered no-margin-top">{about.james.role}</p>
                 { about.james.bio.map(p => <p className="small">{p}</p>) }
                 <p className="small"><a href={about.james.website} target="_blank">{about.james.website}</a></p>
               </div>
-
-              <div className="team-grid-item grid-3 small-margin">
-                <h4>{about.cezar.name}</h4>
+            </div>
+            <div className="team-grid no-margin-bottom">
+              <div className="team-grid-item">
+                <h3 className="centered">{about.cezar.name}</h3>
+                <p className="small centered no-margin-top">{about.cezar.role}</p>
+                { about.cezar.bio.map(p => <p className="small">{p}</p>) }
+                <p className="small"><a href={about.cezar.website} target="_blank">{about.cezar.website}</a></p>
+              </div>
+              <div className="team-grid-item">
+                <h3 className="centered">{about.lydia.name}</h3>
+                <p className="small centered no-margin-top">{about.cezar.role}</p>
                 { about.cezar.bio.map(p => <p className="small">{p}</p>) }
                 <p className="small"><a href={about.cezar.website} target="_blank">{about.cezar.website}</a></p>
               </div>
             </div>
+
+
           </div>
 
           <h3 className="centered">Contact Us</h3>
-            <div className="team-grid no-margin-bottom">
+            <div className="team-grid team-grid-contact no-margin-bottom">
               <div className="team-grid-item no-side-margin center-content">
                 <a href={"tel:" + about.contact.tel}>  
                   <div className="contact-item-container"><p className="large centered">{about.contact.tel}</p></div>

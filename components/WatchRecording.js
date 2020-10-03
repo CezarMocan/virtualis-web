@@ -17,7 +17,8 @@ class WatchRecording extends React.Component {
     const containerCls = classnames({
       "watch-recording-container": true,
       "interactive": hasRecording,
-      "with-background": open
+      "with-background": open,
+      "open": open
     })
     const streamWidth = windowWidth * 0.83 - ((windowWidth > 500) ? 290 : 30)
     const streamHeight = streamWidth * 9 / 16
