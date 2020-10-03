@@ -19,6 +19,16 @@ const NAV = {
 }
 
 class Main extends React.Component {
+  state = {
+    url: ''
+  }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // const nextUrl = nextProps.url.toLowerCase()
+    // const { url } = this.state
+    // if (nextUrl != url) {
+
+    // }
+  }
   render() {
     console.log(this.props)
     let { url } = this.props
