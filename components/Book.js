@@ -39,7 +39,6 @@ class Main extends React.Component {
     for (let i = 0; i < testimonials.length; i++) {
       const b = this.spawnBubble(i, prevY, testimonials[i])
       prevY = b.lowerBound
-      console.log('spawning bubble... ', prevY, this.height)
       if (prevY > this.height) {
         b.remove()
         return

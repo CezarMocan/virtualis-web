@@ -8,35 +8,31 @@ import ImageTour6 from '../static/img/tours/6.png'
 module.exports = {
   tours: [
     {
-      title: 'Dungeon Body Building Tour',
-      duration: '15 minutes',
-      about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR. While being playful, performative, and fun, their tours are also critical examinations of the culture making, body confusions, and social norms specific to VRChat and prevalent in social VR as a medium.',
+      title: 'Currency',
+      duration: '60 minutes',
+      about: "Looking for the next bitcoin? You won't find it in VRChat! In fact, there is no formal economy at all in VRChat. But that doesn't mean currency doesn't exist in other forms. We'll take a look at what is valued and prioritized and how this is determined by the platform's profit and operation model. We will explore worlds that show a simulacra of real world ideas of consumerism and profit-making and how that shapeshifts into something new in the absence of capitalist functionality.",
       schedule: [
-        { date: 'September 4, 2020', time: '4 – 4:15pm EST' },
-        { date: 'September 2, 2020', time: '6 – 6:15pm EST' },
-        { date: 'September 1, 2020', time: '4 – 4:15pm EST' },      
+        { date: 'Will be announced soon.', time: '' },
+        // { date: 'September 2, 2020', time: '6 – 6:15pm EST' },
+        // { date: 'September 1, 2020', time: '4 – 4:15pm EST' },
       ],
       image: ImageTour1
     },
     {
-      title: 'Foxy Snow Angel Resort & Spa',
-      duration: '30 minutes',
-      about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR. While being playful, performative, and fun, their tours are also critical examinations of the culture making, body confusions, and social norms specific to VRChat and prevalent in social VR as a medium.',
+      title: 'Time',
+      duration: '60 minutes',
+      about: 'Are you sick of hearing about "innovation" and "disruption"? Great, we are too! In this tour we\'ll cast aside the breathless considerations surrounding the future of Social VR and focus instead on the medium\'s death. We\'ll travel to worlds and discover how erosion, decay and the passage of time manifest in an environment where the entropy of our IRL world isn\'t immediately visible. This tour will take you to the edges of VRChat where the seams begin to show and the simulation begins to break down, all thanks to one driving factor: time.',
       schedule: [
-        { date: 'September 24, 2020', time: '4 – 4:15pm EST' },
-        { date: 'September 21, 2020', time: '6 – 6:30pm EST' },
-        { date: 'September 12, 2020', time: '4 – 4:30pm EST' },      
+        { date: 'Will be announced soon.', time: '' },
       ],
       image: ImageTour2
     },
     {
-      title: 'Norm City Solo Subway Ride',
+      title: 'Identity',
       duration: '1 hour',
-      about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR. While being playful, performative, and fun, their tours are also critical examinations of the culture making, body confusions, and social norms specific to VRChat and prevalent in social VR as a medium.',
+      about: "Want a new identity? This is the tour for you! We'll learn about the common ways in which VRChat users play with and explore identity using available digital tools. This tour will visit worlds that reveal how the platform supports a mix-and-match mentality towards avatar creation and how it departs from predecessors and contemporary internet platforms. You'll have the opportunity to try on a variety of avatars and experience different forms of embodiment - including human, non human and perhaps somewhere in between. Bring an open mind, ready for trust-based partner activities and experimental theater-inspired group exercises.",
       schedule: [
-        { date: 'October 4, 2020', time: '4 – 5pm EST' },
-        { date: 'September 15, 2020', time: '6 – 7pm EST' },
-        { date: 'September 12, 2020', time: '4 – 5pm EST' },      
+        { date: 'Will be announced soon.', time: '' },
       ],
       image: ImageTour3
     },  
