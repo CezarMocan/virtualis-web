@@ -16,7 +16,7 @@ class Main extends React.Component {
             return (
               <div className="content-section narrow bordered faq">
                 <h1>{f.title}</h1>
-                { f.content.map(p => <p className="large">{p}</p>)}
+                { f.content.map(p => <p className="large" dangerouslySetInnerHTML={{ __html: p}}></p>)}
               </div>  
             )
           })}

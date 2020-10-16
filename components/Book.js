@@ -62,7 +62,7 @@ class Main extends React.Component {
               return (
                 <div className="content-section">
                   <h2>{t.title}</h2>
-                  { t.content.map(p => <p>{p} </p>)}
+                  { t.content.map(p => <p dangerouslySetInnerHTML={{ __html: p}}></p>)}
                   { t.button && <ShallowLink href="/watch"><div className="menu-button small" style={{marginLeft: -5, marginTop: 5}}><h4 className="noselect">Watch Now</h4></div></ShallowLink> }
                 </div>    
               )
