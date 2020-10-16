@@ -27,16 +27,53 @@ module.exports = {
   ],
   testimonials: [
     {
-      quote: '\"Lorem ipsum dolor\nsit amet, consect\ndeutuer adipiscin\"',
-      author: 'Meowzers'
+      quote: '\"Who needs IRL friends\nwhen you can log into VRChat\nand hang out with the\nVirtualis crew?\"',
+      author: 'Guillermo L.'
     },
     {
-      quote: '\"Lorem ipsum dolor sit\namet, consect deutuer\nadipiscin consec lorem\nipsumadipiscin consect\ndetuer adipiscin\"',
-      author: 'MeowMeow Meow'
+      quote: '\"My apartment felt\na lot smaller after coming\nback from this amazing\ntour.\"',
+      author: 'Fran M.'
     },
     {
-      quote: '\"Lorem ipsum\ndolor\"',
-      author: 'Mr. M'
+      quote: '\"I spent 45 minutes walking\naround as a super buff\nPikachu.\n10/10 would do again!\"',
+      author: 'Kira W.'
     },
+    {
+      quote: '\"Controversial statement but\nfar superior to Second Life\nif you ask me.\"',
+      author: 'Noya V.'
+    },
+    {
+      quote: '\"It was a tour of the\nmind, body, and soul.\"',
+      author: 'Sisa L.'
+    },
+    {
+      quote: '\"Much more entertaining than\nthe Log Cabins of the Northeast Tour\nmy partner took me on\nlast September.\"',
+      author: 'Carlo G.'
+    },
+    {
+      quote: '\"A major disruptor\nin the tour agency industry! \"',
+      author: 'Ali O.'
+    },
+    {
+      quote: '\"Tour Agency to watch\nout for in 2020!\"',
+      author: 'Aya R.'
+    },
+    {
+      quote: '\"Am I still in VR?\nIt\'s hard to tell.\"',
+      author: 'Tori B.'
+    },
+    {
+      quote: '\"Met my best friend on this tour.\nThey were the donkey from Shrek\nshaped like a helicopter and I knew\nright away we would connect.\"',
+      author: 'Marcus P.'
+    },
+    {
+      quote: '\"Matt and Lydia talked...\na lot...they know a lot\nabout social VR,\nmaybe too much.\"',
+      author: 'Saul K.'
+    },
+    {
+      quote: '\"Screw the Bahamas, this was\nthe vacation me and my family needed.\"',
+      author: 'Pam S.'
+    }
+
   ]
 }

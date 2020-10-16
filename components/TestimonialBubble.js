@@ -6,13 +6,15 @@ const MIN_VELOCITY = 0.1
 
 export default class TestimonialBubble {
   constructor(x, y, text, r, noCircles, canvasWidth, canvasHeight) {
+    this.fontSize = Math.min(22, 22 * (canvasWidth / 800))
+    console.log('Font size: ', this.fontSize, canvasWidth)
     this.text = new paper.PointText(new paper.Point(0, 0))
     this.text.content = text.quote
-    this.text.fontSize = 22
+    this.text.fontSize = this.fontSize
     this.text.fillColor = 'white'
     this.text.fontFamily = 'Graphik-Bold'
     this.text.justification = "center"
-    r = 0.5 * this.text.bounds.width + 40
+    r = 0.5 * this.text.bounds.width + 20
     this.text.remove()
 
     x = random(2 * r + 10, canvasWidth - 2 * r - 10)
@@ -85,7 +87,7 @@ export default class TestimonialBubble {
     this.text = new paper.PointText(new paper.Point(center.x, center.y))
     // this.text.position = this.renderCircle.position.clone()
     this.text.content = text.quote
-    this.text.fontSize = 22
+    this.text.fontSize = this.fontSize
     this.text.fillColor = 'white'
     this.text.fontFamily = 'Graphik-Bold'
     this.text.justification = "center"
@@ -93,7 +95,7 @@ export default class TestimonialBubble {
 
     this.authorText = new paper.PointText(new paper.Point(center.x, center.y))
     this.authorText.content = text.author
-    this.authorText.fontSize = 15
+    this.authorText.fontSize = this.fontSize * (15 / 22)
     this.authorText.fillColor = 'white'
     this.authorText.fontFamily = 'Graphik-Regular'
     this.authorText.justification = "center"
@@ -110,7 +112,7 @@ export default class TestimonialBubble {
     this.velocity = { x: random(MIN_VELOCITY, MAX_VELOCITY) * randomSgn(), y: random(MIN_VELOCITY, MAX_VELOCITY) * randomSgn() }
     this.movementBounds = {
       x: 0, width: canvasWidth,
-      y: Math.max(0, y - 1.3 * r), height: Math.min(2.8 * r, canvasHeight - y + 1.5 * r)
+      y: Math.max(0, y - 1.7 * r), height: Math.min(2.8 * r, canvasHeight - y + 1.5 * r)
     }
   }
 

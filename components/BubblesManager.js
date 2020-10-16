@@ -173,6 +173,11 @@ class Main extends React.Component {
     this.initializeText()
     window.addEventListener('resize', this.onWindowResize)
   }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onWindowResize)
+    paper.view.onFrame = null
+    paper.view.remove()
+  }
   render() {
     return (
       <div className="splash-bubbles">

@@ -7,8 +7,8 @@ import { book, testimonials } from '../content/book'
 import TestimonialBubble from './TestimonialBubble'
 import { random } from '../modules/utils'
 
-const MAX_BUBBLE_RADIUS = 0.22
-const MIN_BUBBLE_RADIUS = 0.3
+const MAX_BUBBLE_RADIUS = 0.25
+const MIN_BUBBLE_RADIUS = 0.25
 
 class Main extends React.Component {
   get width() { return this._canvas ? this._canvas.width / window.devicePixelRatio : 100 }
@@ -17,7 +17,6 @@ class Main extends React.Component {
   setupCanvas = (c) => {
     this._canvas = c
     paper.setup(this._canvas)
-    paper.view.onFrame = this.draw
     paper.view.draw();
   }
   spawnBubble(index, prevY, text) {
@@ -40,12 +39,17 @@ class Main extends React.Component {
     for (let i = 0; i < testimonials.length; i++) {
       const b = this.spawnBubble(i, prevY, testimonials[i])
       prevY = b.lowerBound
+      console.log('spawning bubble... ', prevY, this.height)
       if (prevY > this.height) {
         b.remove()
+        return
       }
     }
   }
-
+  componentWillUnmount() {
+    paper.view.onFrame = null
+    paper.view.remove()
+  }
   render() {
     const { url } = this.props.url
     return (
@@ -65,7 +69,7 @@ class Main extends React.Component {
               )
             })}
           </div>
-          <div className="page-column" style={{minHeight: 1300}}>
+          <div className="page-column">
             <canvas id="book-bubble-canvas" resize="true" ref={this.setupCanvas}></canvas>
           </div>
         </div>
