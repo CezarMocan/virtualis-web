@@ -90,6 +90,10 @@
   border-bottom: 2px solid @color-light;
   transform: translateY(-50%);
   position: relative;
+  @media only screen and (max-width: 1000px) {
+    width: 25px;
+    height: 25px;
+  }
   &:after {
     content: '';
     position: absolute;
@@ -98,6 +102,10 @@
     border-right: 2px solid @color-light;
     height: 35px;
     width: 35px;
+    @media only screen and (max-width: 1000px) {
+      width: 25px;
+      height: 26px;
+    }  
     transform: translateY(50%) translateX(-50%);
   }
 }
