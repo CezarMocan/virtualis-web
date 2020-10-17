@@ -6,6 +6,7 @@ import Logo from './Logo'
 import { book, testimonials } from '../content/book'
 import TestimonialBubble from './TestimonialBubble'
 import { random } from '../modules/utils'
+import classnames from 'classnames'
 
 const MAX_BUBBLE_RADIUS = 0.25
 const MIN_BUBBLE_RADIUS = 0.25
@@ -16,14 +17,10 @@ class Main extends React.Component {
 
   setupCanvas = (c) => {
     this._canvas = c
-    paper.setup(this._canvas)
-    paper.view.draw();
   }
   spawnBubble(index, prevY, text) {
-    const minR = MIN_BUBBLE_RADIUS * this.width
-    const maxR = MAX_BUBBLE_RADIUS * this.width
-    let r = random(minR, maxR)
-    let x = random(2 * r, this.width - 2 * r)
+    const r = this.width > 500 ? 0.25 * this.width : 0.38 * this.width
+    let x = this.width / 2
     let y = prevY + 1.5 * r
     return new TestimonialBubble(x, y, text, r, Math.floor(random(5, 9)), this.width, this.height)
   }
@@ -34,7 +31,10 @@ class Main extends React.Component {
     }
   }
   componentDidMount() {
-    let prevY = -50
+    if (paper.projects.length > 0) paper.projects.forEach(p => p.remove())
+    paper.setup(this._canvas)
+    paper.view.draw();
+    let prevY = this.width > 500 ? -50 : -50
     this.shuffleArray(testimonials)
     for (let i = 0; i < testimonials.length; i++) {
       const b = this.spawnBubble(i, prevY, testimonials[i])
@@ -46,17 +46,18 @@ class Main extends React.Component {
     }
   }
   componentWillUnmount() {
-    paper.view.onFrame = null
-    paper.view.remove()
   }
   render() {
-    const { url } = this.props.url
+    const { url, visible } = this.props
+    const pcCls = classnames({
+      "page-content": true,
+      "page-content-columns": true,
+      "invisible": !visible 
+    })
     return (
       <>
-      <div className="page-container">        
-        <Logo className="small-logo"/>
-
-        <div className="page-content page-content-columns">
+      <div className="page-container">
+        <div className={pcCls}>
           <div className="page-column">
             { book.map(t => {
               return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import { withMainContext } from '../context/MainContext'
-import Logo from './Logo'
+import classnames from 'classnames'
 import TourCard from './TourCard'
 import TourCardSmall from './TourCardSmall'
 import { tours, comingSoonTours } from '../content/tourPackages'
@@ -8,12 +8,16 @@ import { tours, comingSoonTours } from '../content/tourPackages'
 
 class Main extends React.Component {
   render() {
-    const { url } = this.props.url
+    const { url, visible } = this.props
+    const pcCls = classnames({
+      "page-content": true,
+      "wide": true,
+      "invisible": !visible 
+    })
     return (
       <>
       <div className="page-container">
-        <Logo className="small-logo"/>
-        <div className="page-content wide">
+        <div className={pcCls}>
           { tours.map(t => {
             return (
             <TourCard 

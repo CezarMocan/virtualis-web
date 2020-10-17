@@ -22,7 +22,7 @@ a {
   max-height: ~"calc(100vh - 80px)";
   @media only screen and (max-width: 500px) {
     padding: @app-padding-mobile;
-    max-height: ~"calc(100vh - 30px)";
+    max-height: ~"calc(100vh - 40px)";
   }
 }
 
@@ -32,21 +32,29 @@ a {
   width: 100%;
   border-radius: @border-radius;
   margin-bottom: 40px;
+  padding-top: 60px;
 
   @media only screen and (max-width: 500px) {
     border-radius: 25px;
+    padding-top: 0;
   }
-
   &.splash {
+    padding-top: 0;
     height: ~"calc(100vh - 80px)";
     @media only screen and (max-width: 500px) {
-      height: ~"calc(100vh - 30px)";
+      height: ~"calc(100vh - 40px)";
     }
     margin-bottom: 0;
   }
 }
 
 .small-logo-container {
+  position: absolute;
+  top: 42px;
+  @media only screen and (max-width: 500px) {
+    top: 20px;
+  }  
+  left: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -54,6 +62,11 @@ a {
   margin-top: @internal-margin;
   margin-bottom: @internal-margin;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  &.invisible {
+    opacity: 0;
+  }
 
   .small-logo {
     max-height: 2.8rem;
@@ -65,6 +78,11 @@ a {
 }
 
 .page-content {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  &.invisible {
+    opacity: 0;
+  }
   margin-top: 100px;
   margin-left: 50px;
   margin-right: 50px;
@@ -90,6 +108,11 @@ a {
     }
   }
 
+  &.splash {
+    margin: 0;
+    height: 100%;
+  }
+
   .content-section {
     margin-bottom: 75px;
     &.narrow {
@@ -109,7 +132,7 @@ a {
       border-radius: @border-radius;
       padding: 10px 36px;
       @media screen and (max-width: 500px) {
-        padding: 5px 25px;
+        padding: 5px 20px;
       }  
     }
     &.faq {

@@ -80,9 +80,6 @@ class Main extends React.Component {
   }
   setupCanvas = (c) => {
     this._canvas = c
-    paper.setup(this._canvas)
-    paper.view.onFrame = this.draw
-    paper.view.draw();
   }
   buildGraph(bubbles) {
     this.graph = []
@@ -135,17 +132,16 @@ class Main extends React.Component {
 
   initializeText = () => {
     this.textInitialized = false
-    console.log('initialize text')
-    const padding = this.width > 500 ? 27 : 12
+    const padding = this.width > 500 ? 27 : 15
     const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
-    const cornerSize = new paper.Size(40, 40);
+    const cornerSize = new paper.Size(25, 25);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
     this.textOffset = 0
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
-      fontSize: this.width > 500 ? 21 : 13.5, 
+      fontSize: this.width > 500 ? 21 : 13, 
       fillColor: 'white',
       // fontWeight: 'bold',
-      fontFamily: 'Graphik-Bold'
+      fontFamily: this.width > 500 ? 'Graphik-Bold' : 'Graphik-Regular'
     }, TEXT_REPETITION)
     this.textInitialized = true
   }
@@ -185,15 +181,16 @@ class Main extends React.Component {
     }
   }
   componentDidMount() {
+    if (paper.projects.length > 0) paper.projects.forEach(p => p.remove())
+    paper.setup(this._canvas)
+    paper.view.onFrame = this.draw
+    paper.view.draw();
     this.spawnInitialBubbles()
-    console.log('initialize text: ', performance.now())
     this.initializeText()
     window.addEventListener('resize', this.onWindowResize)
   }
   componentWillUnmount() {
     window.removeEventListener('resize', this.onWindowResize)
-    paper.view.onFrame = null
-    paper.view.remove()
   }
   render() {
     return (

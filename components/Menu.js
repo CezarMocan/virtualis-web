@@ -54,7 +54,6 @@ class Main extends React.Component {
         }
         { hasMobileMenu && open && 
             <div className={mobileMenuCls}>
-              <Logo className="small-logo"/>
               <div className="fake-border">
                 <ShallowLink href="/tours" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Tour Packages</h3></div></ShallowLink>
                 <ShallowLink href="/book" onClick={this.onMenuToggle}><div className="menu-button menu-list-button"><h3 className="noselect menu-link">Book a Tour</h3></div></ShallowLink>

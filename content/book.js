@@ -70,7 +70,7 @@ module.exports = {
       author: 'Saul K.'
     },
     {
-      quote: '\"Screw the Bahamas, this was\nthe vacation me and my family needed.\"',
+      quote: '\"Screw the Bahamas, this was\nthe vacation me and\nmy family needed.\"',
       author: 'Pam S.'
     }
 

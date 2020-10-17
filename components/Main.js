@@ -8,6 +8,7 @@ import Watch from './Watch'
 import Tours from './Tours'
 import About from './About'
 import Splash from './Splash'
+import Logo from './Logo'
 
 const NAV = {
   ABOUT: "about",
@@ -20,31 +21,40 @@ const NAV = {
 
 class Main extends React.Component {
   state = {
-    url: ''
+    previousUrl: '',
+    transitioning: false,
   }
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // const nextUrl = nextProps.url.toLowerCase()
-    // const { url } = this.state
-    // if (nextUrl != url) {
-
-    // }
+    const nextUrl = nextProps.url.toLowerCase()
+    const { previousUrl } = this.state
+    if (nextUrl != previousUrl) {
+      this.setState({
+        transitioning: true
+      }, () => {
+        setTimeout(() => {
+          this.setState({ previousUrl: nextUrl.toLowerCase(), transitioning: false })
+        }, 500)
+      })
+    }
   }
   render() {
-    console.log(this.props)
     let { url } = this.props
+    let { previousUrl, transitioning } = this.state
     const lUrl = url.toLowerCase()
-
-    let badUrl = (Object.values(NAV).indexOf(lUrl) == -1)
+    const badUrl = (Object.values(NAV).indexOf(lUrl) == -1)
+    const isSplash = lUrl == NAV.HOME || badUrl
     return (
       <div className="app-container">
         <Background/>
         <Menu/>
-        { lUrl == NAV.ABOUT && <About/>}
-        { lUrl == NAV.BOOK && <Book/>}
-        { lUrl == NAV.FAQ && <FAQ/>}
-        { lUrl == NAV.WATCH && <Watch/>}
-        { lUrl == NAV.TOURS && <Tours/>}
-        { (lUrl == NAV.HOME || badUrl) && <Splash/>}
+        { (lUrl == NAV.ABOUT || (previousUrl == NAV.ABOUT && transitioning)) && <About visible={lUrl == NAV.ABOUT && !transitioning}/>}
+        { (lUrl == NAV.BOOK || (previousUrl == NAV.BOOK && transitioning))  && <Book visible={lUrl == NAV.BOOK && !transitioning}/>}
+        { (lUrl == NAV.FAQ || (previousUrl == NAV.FAQ && transitioning))  && <FAQ visible={lUrl == NAV.FAQ && !transitioning}/>}
+        { (lUrl == NAV.WATCH || (previousUrl == NAV.WATCH && transitioning))  && <Watch visible={lUrl == NAV.WATCH && !transitioning}/>}
+        { (lUrl == NAV.TOURS || (previousUrl == NAV.TOURS && transitioning))  && <Tours visible={lUrl == NAV.TOURS && !transitioning}/>}
+        { (isSplash || (previousUrl == NAV.HOME && transitioning))  && <Splash visible={isSplash && !transitioning}/>}
+        {/* { (lUrl == NAV.HOME || badUrl) && <Splash/>} */}
+        <Logo className="small-logo" visible={!(lUrl == NAV.HOME || badUrl)}/>
       </div>
     )
   }

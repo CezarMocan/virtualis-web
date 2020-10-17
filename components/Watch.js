@@ -1,9 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import { withMainContext } from '../context/MainContext'
-import Logo from './Logo'
 import { watch } from '../content/watch'
 import WatchRecording from './WatchRecording'
+import classnames from 'classnames'
 
 class Main extends React.Component {
   state = {
@@ -24,14 +23,18 @@ class Main extends React.Component {
     window.addEventListener('resize', this.onWindowResize)
   }
   render() {
-    const { url, TwitchEmbedVideo } = this.props
+    const { url, TwitchEmbedVideo, visible } = this.props
+    const pcCls = classnames({
+      "page-content": true,
+      "invisible": !visible 
+    })
+
     const { windowWidth } = this.state
     const streamWidth = windowWidth > 500 ? (0.7 * windowWidth) : (0.87 * windowWidth)
     return (
       <>
       <div className="page-container">
-        <Logo className="small-logo"/>
-        <div className="page-content">
+        <div className={pcCls}>
           <div className="content-section narrow">
             { watch.description.map(p => <p className="large centered">{p}</p>) }
           </div>

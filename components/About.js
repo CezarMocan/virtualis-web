@@ -1,22 +1,21 @@
 import React from 'react'
 import { withMainContext } from '../context/MainContext'
-import ShallowLink from './ShallowLink'
-import Logo from './Logo'
-import MattImage from '../static/img/matt-image.png'
-import MattAvatar from '../static/img/matt-avatar.png'
-import LydiaImage from '../static/img/lydia-image.png'
-import LydiaAvatar from '../static/img/lydia-avatar.png'
 import { about } from '../content/about'
+import classnames from 'classnames'
 
 class Main extends React.Component {
   render() {
-    const { url } = this.props.url
+    const { url, visible } = this.props
+    const pcCls = classnames({
+      "page-content": true,
+      "invisible": !visible 
+    })
     return (
       <>
       <div className="page-container">
-        <Logo className="small-logo"/>
+        {/* <Logo className="small-logo"/> */}
 
-        <div className="page-content">
+        <div className={pcCls}>
           <div className="content-section narrow">
             { about.description.map(p => <p className="large">{p}</p>) }
           </div>
