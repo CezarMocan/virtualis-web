@@ -1,6 +1,10 @@
 module.exports = {
   watch: {
     liveTwitchChannel: 'mattromein',
+    description: [
+      'Check out our schedule below and come back to watch any of our live streamed tours. For past dates simply click on the bubble to view an archive of that tour.',
+      ''
+    ],
     futureSessions: [
       {
         date: "October 6, 2020",

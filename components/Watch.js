@@ -32,6 +32,9 @@ class Main extends React.Component {
       <div className="page-container">
         <Logo className="small-logo"/>
         <div className="page-content">
+          <div className="content-section narrow">
+            { watch.description.map(p => <p className="large centered">{p}</p>) }
+          </div>
           <div className="watch-live-container">
             { TwitchEmbedVideo && <TwitchEmbedVideo
               autoplay

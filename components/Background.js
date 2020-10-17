@@ -77,6 +77,16 @@ class Main extends React.Component {
       to: null
     }
   }
+  destroy() {
+    delete this.scene
+    delete this.mesh
+    delete this.material
+    delete this.clock
+    delete this.camera
+    delete this.geometry
+    window.removeEventListener("resize", this.onWindowResize);
+    cancelAnimationFrame(this._raf)
+  }
   onWindowResize = () => {
 	// Update the renderer
     this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -97,7 +107,7 @@ class Main extends React.Component {
     this.uniforms[param].value.set(r, g, b)
   }
   animate = () => {
-    requestAnimationFrame(this.animate);
+    this._raf = requestAnimationFrame(this.animate);
     this.uniforms.u_time.value = this.clock.getElapsedTime();
     this.uniforms.u_frame.value += 1.0;
     
@@ -164,6 +174,9 @@ class Main extends React.Component {
     this.init()
     this.animate()
     // this.renderThree()
+  }
+  componentWillUnmount() {
+    this.destroy()
   }
   render() {
     const { url } = this.props

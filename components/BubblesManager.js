@@ -11,8 +11,25 @@ import Image5 from '../static/img/splash/5.png'
 import Image6 from '../static/img/splash/6.png'
 import Image7 from '../static/img/splash/7.png'
 import Image8 from '../static/img/splash/8.png'
+import Image9 from '../static/img/splash/9.png'
+import Image10 from '../static/img/splash/10.png'
+import Image11 from '../static/img/splash/11.png'
+import Image12 from '../static/img/splash/12.png'
+import Image13 from '../static/img/splash/13.png'
+import Image14 from '../static/img/splash/14.png'
+import Image15 from '../static/img/splash/15.png'
+import Image16 from '../static/img/splash/16.png'
+import Image17 from '../static/img/splash/17.png'
+import Image18 from '../static/img/splash/18.png'
+import Image19 from '../static/img/splash/19.png'
+import Image20 from '../static/img/splash/20.png'
+import Image21 from '../static/img/splash/21.png'
+import Image22 from '../static/img/splash/22.png'
+import Image23 from '../static/img/splash/23.png'
+import Image24 from '../static/img/splash/24.png'
 
-const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8]
+
+const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20, Image21, Image22, Image23, Image24]
 
 const TEXT_REPETITION = 100
 const MAX_BUBBLES = 12

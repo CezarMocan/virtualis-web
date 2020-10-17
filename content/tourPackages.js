@@ -1,9 +1,13 @@
-import ImageTour1 from '../static/img/tours/1.png'
-import ImageTour2 from '../static/img/tours/2.png'
-import ImageTour3 from '../static/img/tours/3.png'
+import ImageTour1 from '../static/img/tours/currency.png'
+import ImageTour2 from '../static/img/tours/time.png'
+import ImageTour3 from '../static/img/tours/identity.png'
 import ImageTour4 from '../static/img/tours/4.png'
 import ImageTour5 from '../static/img/tours/5.png'
 import ImageTour6 from '../static/img/tours/6.png'
+import ImageTour7 from '../static/img/tours/7.png'
+import ImageTour8 from '../static/img/tours/8.png'
+import ImageTour9 from '../static/img/tours/9.png'
+
 
 module.exports = {
   tours: [
@@ -50,7 +54,7 @@ module.exports = {
         title: 'Foxy Snow Angel Resort & Spa',
         duration: '30 minutes',
         about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR.',
-        image: ImageTour5
+        image: ImageTour7
       },
       {
         title: 'Norm City Solo Subway Ride',
@@ -64,19 +68,19 @@ module.exports = {
         title: 'Bonfire Dance Party',
         duration: '15 minutes',
         about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR.',
-        image: ImageTour4
+        image: ImageTour5
       },
       {
         title: 'Cakeland Church Buffet and Hall',
         duration: '30 minutes',
         about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR.',
-        image: ImageTour5
+        image: ImageTour8
       },
       {
         title: 'DJ Fax-A-Lot Office Cubicle Party',
         duration: '1 hour',
         about: 'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR.',
-        image: ImageTour6
+        image: ImageTour9
       },  
     ]
   ]
