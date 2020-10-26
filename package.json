@@ -9,8 +9,9 @@
     "build": "next build",
     "start": "next build && next start",
     "export": "rm -rf .next && next build && next export",
+    "sync:cloudfront": "AWS_DEFAULT_PROFILE=cezar-cli aws cloudfront create-invalidation --distribution-id ELNKKPWJFI0XM --paths \"/*\"",
     "sync:s3": "AWS_DEFAULT_PROFILE=cezar-cli aws s3 sync out s3://virtualis.tours",
-    "deploy": "npm run export && npm run sync:s3"
+    "deploy": "npm run export && npm run sync:s3 && npm run sync:cloudfront"
   },
   "author": "",
   "license": "ISC",
