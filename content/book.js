@@ -3,15 +3,17 @@ module.exports = {
     {
       title: 'How to Book a Tour',
       content: [
-        "Virtualis is presented as a part of IDFA DocLab's 2020 festival. DocLab is entirely virtual this year and you will be able to book an appointment through the DocLab website.",
-        "After confirming your appointment we will send details on how to downlad VRChat and when and where to meet us. From there our knowledgable Virtualis Tour Guides™ will guide you through an onboarding process in VRChat before beginning the tour."
+        "Virtualis is presented as a part of IDFA DocLab's 2020 festival. Festival attendees will be able to book time on site with a VR station in order to join the tour.",
+        "If you are a festival attendee and resident of Amsterdam you can book your tour through IDFA DocLab's registration portal.",
+        "Tours for online only participants will be an invite only affair with invited guests by IDFA DocLab's internal team. These guests will be sent registration info and will receive an appointment confirmation after registering.",
+        `After confirming your appointment we will send details on how to download VRChat and when and where to meet us. From there our knowledgeable Virtualis Tour Guides™ will guide you through an onboarding process in VRChat before beginning the tour.`
       ],
       button: false
     },
     {
       title: 'Equipment Required',
       content: [
-        "Attendees will need either an Oculus Rift headset or a Vive headset and a VR capable computer. Oculus Quest users will need to use a Link Cable and PC. Due to limitations VRChat places on Oculus Quest users without the Link Cable, we will not be to offer tours to these users. While VRChat does have a non-VR desktop mode we will not be accomodating those users as we feel VR is an essential part of the experience and topics covered in our tours.",
+        "Online attendees will need either an Oculus Rift headset or a Vive headset and a VR capable computer. Oculus Quest users will need to use a Link Cable and PC. Due to limitations VRChat places on Oculus Quest users without the Link Cable, we will not be able to offer tours to these users. While VRChat does have a non-VR desktop mode we will not be accommodating those users as we feel VR is an essential part of the experience and topics covered in our tours.",
         "If you have questions about whether your VR equipment is compatible please send us a message."
       ],
       button: false
@@ -19,7 +21,7 @@ module.exports = {
     {
       title: "Can't Make a Tour?",
       content: [
-        "Make sure to catch one of our live streams on Twitch or check out an archived tour!",
+        `Make sure to catch one of our live streams on the <a href="/watch">Live Stream</a> page, or check out an archived tour!`,
       ],
       button: true
     },

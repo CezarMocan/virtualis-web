@@ -7,6 +7,7 @@ export default class MainContextProvider extends React.Component {
     state = {
         isMobile: null,
         url: null,
+        hash: null,
         router: null,
         windowWidth: 1024,
         windowHeight: 768,
@@ -15,9 +16,9 @@ export default class MainContextProvider extends React.Component {
     }    
 
     componentDidUpdate(oldProps) {
-      if (oldProps.url != this.props.url) {
-        const { url } = this.props
-        this.setState({ url })
+      if (oldProps.url != this.props.url || oldProps.hash != this.props.hash) {
+        const { url, hash } = this.props
+        this.setState({ url, hash })
       }
     }
 

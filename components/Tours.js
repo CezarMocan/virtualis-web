@@ -26,9 +26,10 @@ class Main extends React.Component {
               duration={t.duration}
               schedule={t.schedule}
               image={t.image}
+              eId={t.id}
            />)
           })}
-
+                
           { comingSoonTours.map(row => {
             return (
               <div className="coming-soon-tours-container">

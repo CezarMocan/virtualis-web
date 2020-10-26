@@ -3,9 +3,9 @@ import ShallowLink from './ShallowLink'
 
 class TourCard extends React.Component {
   render() {
-    const { title, duration, about, image, schedule } = this.props
+    const { title, duration, about, image, schedule, eId } = this.props
     return (
-      <div className="content-section bordered with-background">
+      <div className="content-section bordered with-background"  id={eId}>
         <div className="tour-card-container">
           <div className="tour-card-column image">
             <img src={image}/>

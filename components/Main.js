@@ -39,6 +39,7 @@ class Main extends React.Component {
   }
   render() {
     let { url } = this.props
+    console.log(this.props)
     let { previousUrl, transitioning } = this.state
     const lUrl = url.toLowerCase()
     const badUrl = (Object.values(NAV).indexOf(lUrl) == -1)

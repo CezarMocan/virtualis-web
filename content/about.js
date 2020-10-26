@@ -14,7 +14,8 @@ import JamesTAvatar from '../static/img/james-t-avatar.png'
 module.exports = {
   about: {
     description: [
-      'Virtualis is the #1 VRChat Tour Agency! Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR. While being playful, performative, and fun, their tours are also critical examinations of the culture-making, body confusions, and social norms specific to VRChat and prevalent in social VR as a medium.',
+      'The #1 VRChat Tour Agency!',
+      'Virtualis is a creative experiment in art, research, and performance. Using the social VR platform VRChat, Matt and Lydia have created a conceptual tourist agency as a way to engage audiences with their research and fascinations with social VR. While being playful, performative, and fun, their tours are also critical examinations of the culture-making, body confusions, and social norms specific to VRChat and prevalent in social VR as a medium.',
       'Virtualis is the manifestation of the belief that media theory and deep thinking around the future of our digital spaces and counterparts can be explored and discussed outside of research papers and academic institutions. Book a tour today and join us in exploring and questioning what social VR can teach us about the world today and our virtual future.'
     ],
     lydia: {
@@ -83,7 +84,7 @@ module.exports = {
     },
     contact: {
       tel: '+1-302-293-2147',
-      email: 'hello@virtualis.agency',
+      email: 'virtualis.tours@gmail.com',
       instagram: 'virtualis'
     }
   }

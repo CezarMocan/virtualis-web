@@ -53,7 +53,7 @@ class Main extends React.Component {
             /> }
           </div>
 
-          <h1 className="centered">Schedule</h1>
+          <h1 className="centered">Schedule</h1>          
           <div className="schedule-container">
             { watch.futureSessions.map(s => {
               return (
@@ -69,7 +69,8 @@ class Main extends React.Component {
             })}
           </div>
 
-          <h1 className="centered">Watch Our Past Tours</h1>
+          { (watch.pastSessions.length > 0) && <h1 className="centered">Watch Our Past Tours</h1> }
+          { (watch.pastSessions.length == 0) && <h1 className="centered">Once tours are completed, their recordings will be posted below.</h1> }
           <div className="schedule-container">
             { watch.pastSessions.map((s, index) => {
               return (
