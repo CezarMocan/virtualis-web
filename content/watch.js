@@ -7,42 +7,42 @@ module.exports = {
     ],
     futureSessions: [
       {
-        date: `<a href="/tours#currencies">Virtual Currencies</a><br/>(In Person)`,
+        date: `Virtual Currencies<br/>(In Person)`,
         time: "Saturday, 21 November<br/>12:00pm EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#currencies">Virtual Currencies</a><br/>(Online – Invite Only)`,
+        date: `Virtual Currencies<br/>(Online – Invite Only)`,
         time: "Wednesday, 25 November<br/>9:00am EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#time">DIY Time</a><br/>(In Person)`,
+        date: `DIY Time<br/>(In Person)`,
         time: "Saturday, 21 November<br/>2:00pm EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#time">DIY Time</a><br/>(In Person)`,
+        date: `DIY Time<br/>(In Person)`,
         time: "Sunday, 22 November<br/>9:00am EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#time">DIY Time</a><br/>(Online – Invite Only)`,
+        date: `DIY Time<br/>(Online – Invite Only)`,
         time: "Wednesday, 25 November<br/>11:00am EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#identity">Kitbashing Identity</a><br/>(In Person)`,
+        date: `Kitbashing Identity<br/>(In Person)`,
         time: "Saturday, 21 November<br/>10:00am EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#identity">Kitbashing Identity</a><br/>(In Person)`,
+        date: `Kitbashing Identity<br/>(In Person)`,
         time: "Sunday, 22 November<br/>7:00am EST",        
         hasRecording: false,
       },
       {
-        date: `<a href="/tours#identity">Kitbashing Identity</a><br/>(Online – Invite Only)`,
+        date: `Kitbashing Identity<br/>(Online – Invite Only)`,
         time: "Monday, 23 November<br/>7:00pm EST",        
         hasRecording: false,
       },

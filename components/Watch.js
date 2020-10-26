@@ -70,7 +70,7 @@ class Main extends React.Component {
           </div>
 
           { (watch.pastSessions.length > 0) && <h1 className="centered">Watch Our Past Tours</h1> }
-          { (watch.pastSessions.length == 0) && <h1 className="centered">Once tours are completed, their recordings will be posted below.</h1> }
+          { (watch.pastSessions.length == 0) && <p className="large centered">Once tours are completed, their recordings will be posted below.</p> }
           <div className="schedule-container">
             { watch.pastSessions.map((s, index) => {
               return (
