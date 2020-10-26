@@ -5,7 +5,7 @@ class TourCard extends React.Component {
   render() {
     const { title, duration, about, image, schedule, eId } = this.props
     return (
-      <div className="content-section bordered with-background"  id={eId}>
+      <div className="content-section bordered with-background" id={eId}>
         <div className="tour-card-container">
           <div className="tour-card-column image">
             <img src={image}/>
@@ -23,9 +23,9 @@ class TourCard extends React.Component {
 
                 <div className="tour-card-column-schedule">
                   <h5>Schedule</h5>
-                  { schedule.map(s => {
+                  { schedule.map((s, index) => {
                     return (
-                      <div className="schedule-item-container">
+                      <div className="schedule-item-container" key={`schedule-${eId}-${index}`}>
                         <p className="small no-margin">{s.date}</p>
                         <p className="small no-margin">{s.time}</p>
                       </div>

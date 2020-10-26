@@ -7,6 +7,13 @@ import { tours, comingSoonTours } from '../content/tourPackages'
 
 
 class Main extends React.Component {
+  componentDidMount() {
+    const { hash } = this.props
+    if (hash === '' || hash === null || hash === undefined) return
+    const el = document.getElementById(hash)
+    if (!el) return
+    el.scrollIntoView()
+  }
   render() {
     const { url, visible } = this.props
     const pcCls = classnames({
@@ -27,6 +34,7 @@ class Main extends React.Component {
               schedule={t.schedule}
               image={t.image}
               eId={t.id}
+              key={`tour-card-${t.id}`}
            />)
           })}
                 

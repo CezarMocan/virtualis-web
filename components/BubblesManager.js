@@ -145,7 +145,7 @@ class Main extends React.Component {
       fontSize: this.width > 500 ? 21 : 13, 
       fillColor: 'white',
       // fontWeight: 'bold',
-      fontFamily: this.width > 500 ? 'Graphik-Bold' : 'Graphik-Regular'
+      fontFamily: this.width > 500 ? 'Graphik-Bold' : 'Graphik-Bold'
     }, textRep)
     this.textInitialized = true
   }
