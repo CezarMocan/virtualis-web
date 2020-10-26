@@ -32,7 +32,7 @@ import Image24 from '../static/img/splash/24.png'
 const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20, Image21, Image22, Image23, Image24]
 
 const TEXT_REPETITION = 100
-const MAX_BUBBLES = 12
+const MAX_BUBBLES = 10
 const INITIAL_BUBBLES = 8
 const SPAWN_TIME_LOWER_BOUND_S = 1
 const SPAWN_TIME_UPPER_BOUND_S = 3
@@ -56,7 +56,9 @@ class Main extends React.Component {
   }
   spawnBubble(onScreen = false) {
     let x = random(0, this.width)
-    let r = random(MIN_BUBBLE_RADIUS * this.width, MAX_BUBBLE_RADIUS * this.width)
+    const minRadius = (MIN_BUBBLE_RADIUS) * ((this.height > this.width) + 1)
+    const maxRadius = (MAX_BUBBLE_RADIUS) * ((this.height > this.width) + 1)
+    let r = random(minRadius * this.width, maxRadius * this.width)
     let y = onScreen ? random(0, this.height) : random(this.height + r, this.height + 2 * r)
     let index = parseInt(Math.floor(random(0, IMAGES.length)))
     const isMobile = this.props.isMobile
@@ -131,18 +133,20 @@ class Main extends React.Component {
   }
 
   initializeText = () => {
+    const { isFirefox } = this.props
     this.textInitialized = false
     const padding = this.width > 500 ? 27 : 15
     const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
     const cornerSize = new paper.Size(25, 25);
     this._frame = new paper.Path.Rectangle(rect, cornerSize)
     this.textOffset = 0
+    const textRep = isFirefox ? 1 : TEXT_REPETITION
     this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
       fontSize: this.width > 500 ? 21 : 13, 
       fillColor: 'white',
       // fontWeight: 'bold',
       fontFamily: this.width > 500 ? 'Graphik-Bold' : 'Graphik-Regular'
-    }, TEXT_REPETITION)
+    }, textRep)
     this.textInitialized = true
   }
   drawText = () => {
@@ -204,5 +208,6 @@ class Main extends React.Component {
 export default withMainContext((context, props) => ({
   url: context.url,
   router: context.router,
-  isMobile: context.isMobile
+  isMobile: context.isMobile,
+  isFirefox: context.isFirefox
 }))(Main)
