@@ -3,7 +3,7 @@ module.exports = {
     {
       title: 'How to Book a Tour',
       content: [
-        "Virtualis is presented as a part of IDFA DocLab's 2020 festival. Festival attendees will be able to book time on site with a VR station in order to join the tour.",
+        "Virtualis is presented as a part of IDFA DocLab's 2020 festival. Festival attendees will be able to book time on-site with a VR station in order to join the tour.",
         "If you are a festival attendee and resident of Amsterdam you can book your tour through IDFA DocLab's registration portal.",
         "Tours for online only participants will be an invite only affair with invited guests by IDFA DocLab's internal team. These guests will be sent registration info and will receive an appointment confirmation after registering.",
         `After confirming your appointment we will send details on how to download VRChat and when and where to meet us. From there our knowledgeable Virtualis Tour Guides™ will guide you through an onboarding process in VRChat before beginning the tour.`

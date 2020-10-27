@@ -12,17 +12,17 @@ class TourCard extends React.Component {
           </div>
           <div className="tour-card-column text">
             <div className="text-column-content">
-              <h1 style={{margin: '5px 0'}}>{title}</h1>
-              <p className="small">{duration}</p>
+              <h1 style={{margin: '5px 0 20px 0'}}>{title}</h1>
 
               <div className="tour-card-column-content">
                 <div className="tour-card-column-about margin-right">
-                  <h5>About</h5>
+                  <h5 className="no-margin">Duration</h5>
+                  <p className="small no-margin" style={{marginBottom: '20px'}}>{duration}</p>
                   <p className="small no-margin">{about}</p>
                 </div>
 
                 <div className="tour-card-column-schedule">
-                  <h5>Schedule</h5>
+                  <h5 className="no-margin">Schedule</h5>
                   { schedule.map((s, index) => {
                     return (
                       <div className="schedule-item-container" key={`schedule-${eId}-${index}`}>

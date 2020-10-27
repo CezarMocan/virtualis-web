@@ -12,6 +12,11 @@ module.exports = {
         hasRecording: false,
       },
       {
+        date: `Virtual Currencies<br/>(In Person)`,
+        time: "Sunday, 22 November<br/>7:00am EST",        
+        hasRecording: false,
+      },
+      {
         date: `Virtual Currencies<br/>(Online – Invite Only)`,
         time: "Wednesday, 25 November<br/>9:00am EST",        
         hasRecording: false,
@@ -34,11 +39,6 @@ module.exports = {
       {
         date: `Kitbashing Identity<br/>(In Person)`,
         time: "Saturday, 21 November<br/>10:00am EST",        
-        hasRecording: false,
-      },
-      {
-        date: `Kitbashing Identity<br/>(In Person)`,
-        time: "Sunday, 22 November<br/>7:00am EST",        
         hasRecording: false,
       },
       {

@@ -23,8 +23,8 @@ module.exports = {
       image: LydiaImage,
       avatar: LydiaAvatar,
       bio: [
-        'Lydia Jessup is an artist-researcher and public interest technologist based in Brooklyn. She creates work that combines policy and governance with art and technology. Her most recent research is focused on developing new approaches to computing in urban space that foreground equity, environmental care, and data stewardship.',
-        'Previously, she worked in public policy research at UChicago Urban Labs and in Peru at Innovations for Poverty Action. She holds an MPS from NYU’s Interactive Telecommunications Program (ITP) and a BA in International Relations from Tufts University.'
+        'Lydia Jessup is an artist-researcher and public interest technologist based in Brooklyn. Her work stems from a fascination with our complex technosocial and civic relationships both online and IRL. Her current work is focused on developing new approaches to computing in cities, most recently through designing urban interfaces and studying digital public spaces.',
+        'Previously, she worked in public policy research at UChicago Urban Labs and in Peru at Innovations for Poverty Action. She holds an MPS from NYU’s Interactive Telecommunications Program (ITP) and a BA in International Relations from Tufts University. She currently works as a research resident at ITP and as a Creative Technologist in the Research & Development department at the New York Times.'
       ],
       website: 'https://www.lydiajessup.me/'
     },
