@@ -49,31 +49,31 @@ module.exports = {
     ],
     pastSessions: [
       {
-        date: "Kitbashing Identity – Sep. 21, 2020",
+        date: "Kitbashing Identity – Nov. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
         twitchVideoId: "810714724"
       },
       {
-        date: "Virtual Currencies – Sep. 21, 2020",
+        date: "Virtual Currencies – Nov. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
         twitchVideoId: "810831137"
       },
       {
-        date: "DIY Time – Sep. 21, 2020",
+        date: "DIY Time – Nov. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
         twitchVideoId: "810980128"
       },
       {
-        date: "Virtual Currencies – Sep. 22, 2020",
+        date: "Virtual Currencies – Nov. 22, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
         twitchVideoId: "811865369"
       },
       {
-        date: "DIY Time – Sep. 22, 2020",
+        date: "DIY Time – Nov. 22, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
         twitchVideoId: "811936073"
