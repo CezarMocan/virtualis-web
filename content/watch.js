@@ -6,14 +6,19 @@ module.exports = {
       ''
     ],
     futureSessions: [
+      // {
+      //   date: `Virtual Currencies<br/>(In Person)`,
+      //   time: "Saturday, 21 November<br/>12:00pm EST",        
+      //   hasRecording: false,
+      // },
+      // {
+      //   date: `Virtual Currencies<br/>(In Person)`,
+      //   time: "Sunday, 22 November<br/>7:00am EST",        
+      //   hasRecording: false,
+      // },
       {
-        date: `Virtual Currencies<br/>(In Person)`,
-        time: "Saturday, 21 November<br/>12:00pm EST",        
-        hasRecording: false,
-      },
-      {
-        date: `Virtual Currencies<br/>(In Person)`,
-        time: "Sunday, 22 November<br/>7:00am EST",        
+        date: `Kitbashing Identity<br/>(Online – Invite Only)`,
+        time: "Monday, 23 November<br/>7:00pm EST",        
         hasRecording: false,
       },
       {
@@ -21,41 +26,58 @@ module.exports = {
         time: "Wednesday, 25 November<br/>9:00am EST",        
         hasRecording: false,
       },
-      {
-        date: `DIY Time<br/>(In Person)`,
-        time: "Saturday, 21 November<br/>2:00pm EST",        
-        hasRecording: false,
-      },
-      {
-        date: `DIY Time<br/>(In Person)`,
-        time: "Sunday, 22 November<br/>9:00am EST",        
-        hasRecording: false,
-      },
+      // {
+      //   date: `DIY Time<br/>(In Person)`,
+      //   time: "Saturday, 21 November<br/>2:00pm EST",        
+      //   hasRecording: false,
+      // },
+      // {
+      //   date: `DIY Time<br/>(In Person)`,
+      //   time: "Sunday, 22 November<br/>9:00am EST",        
+      //   hasRecording: false,
+      // },
       {
         date: `DIY Time<br/>(Online – Invite Only)`,
         time: "Wednesday, 25 November<br/>11:00am EST",        
         hasRecording: false,
       },
-      {
-        date: `Kitbashing Identity<br/>(In Person)`,
-        time: "Saturday, 21 November<br/>10:00am EST",        
-        hasRecording: false,
-      },
-      {
-        date: `Kitbashing Identity<br/>(Online – Invite Only)`,
-        time: "Monday, 23 November<br/>7:00pm EST",        
-        hasRecording: false,
-      },
+      // {
+      //   date: `Kitbashing Identity<br/>(In Person)`,
+      //   time: "Saturday, 21 November<br/>10:00am EST",        
+      //   hasRecording: false,
+      // },
     ],
     pastSessions: [
-      /*
       {
-        date: "August 24, 2020",
+        date: "Kitbashing Identity – Sep. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
-        twitchVideoId: "619925172"
+        twitchVideoId: "810714724"
+      },
+      {
+        date: "Virtual Currencies – Sep. 21, 2020",
+        time: "4pm – 4:30pm EST",        
+        hasRecording: true,
+        twitchVideoId: "810831137"
+      },
+      {
+        date: "DIY Time – Sep. 21, 2020",
+        time: "4pm – 4:30pm EST",        
+        hasRecording: true,
+        twitchVideoId: "810980128"
+      },
+      {
+        date: "Virtual Currencies – Sep. 22, 2020",
+        time: "4pm – 4:30pm EST",        
+        hasRecording: true,
+        twitchVideoId: "811865369"
+      },
+      {
+        date: "DIY Time – Sep. 22, 2020",
+        time: "4pm – 4:30pm EST",        
+        hasRecording: true,
+        twitchVideoId: "811936073"
       }
-      */
     ]
   }
 }
