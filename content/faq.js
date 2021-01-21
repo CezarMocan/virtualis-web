@@ -27,13 +27,13 @@ module.exports = {
     {
       title: 'How can I join a tour?',
       content: [
-        `Visit our <a href="/book" target="_blank">Book a Tour</a> page! We will be running tours during DocLab's 2020 festival from November 21st to November 25th.`,
+        `Visit our <a href="/book" target="_blank">Book a Tour</a> page! We do not have any tours currently scheduled but there you can find info for getting in touch in case you'd like to book a tour or have questions about the project.`,
       ],
     },
     {
       title: 'Can I watch a tour?',
       content: [
-        `Head over to our <a href="/watch" target="_blank">Live Stream</a> page and you will see a calendar with dates to tune in. We also have an archive of past tours you can check out.`,
+        `Head over to our <a href="/watch" target="_blank">Live Stream</a> page and you will find an archive of past tours you can check out.`,
       ],
     }
   ]

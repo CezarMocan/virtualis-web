@@ -16,16 +16,6 @@ module.exports = {
       //   time: "Sunday, 22 November<br/>7:00am EST",        
       //   hasRecording: false,
       // },
-      {
-        date: `Kitbashing Identity<br/>(Online – Invite Only)`,
-        time: "Monday, 23 November<br/>7:00pm EST",        
-        hasRecording: false,
-      },
-      {
-        date: `Virtual Currencies<br/>(Online – Invite Only)`,
-        time: "Wednesday, 25 November<br/>9:00am EST",        
-        hasRecording: false,
-      },
       // {
       //   date: `DIY Time<br/>(In Person)`,
       //   time: "Saturday, 21 November<br/>2:00pm EST",        
@@ -36,11 +26,6 @@ module.exports = {
       //   time: "Sunday, 22 November<br/>9:00am EST",        
       //   hasRecording: false,
       // },
-      {
-        date: `DIY Time<br/>(Online – Invite Only)`,
-        time: "Wednesday, 25 November<br/>11:00am EST",        
-        hasRecording: false,
-      },
       // {
       //   date: `Kitbashing Identity<br/>(In Person)`,
       //   time: "Saturday, 21 November<br/>10:00am EST",        
@@ -52,32 +37,50 @@ module.exports = {
         date: "Kitbashing Identity – Nov. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
-        twitchVideoId: "810714724"
+        twitchVideoId: "824212901"
       },
       {
         date: "Virtual Currencies – Nov. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
-        twitchVideoId: "810831137"
+        twitchVideoId: "824214423"
       },
       {
         date: "DIY Time – Nov. 21, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
-        twitchVideoId: "810980128"
+        twitchVideoId: "824217987"
       },
       {
         date: "Virtual Currencies – Nov. 22, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
-        twitchVideoId: "811865369"
+        twitchVideoId: "824222149"
       },
       {
         date: "DIY Time – Nov. 22, 2020",
         time: "4pm – 4:30pm EST",        
         hasRecording: true,
-        twitchVideoId: "811936073"
-      }
+        twitchVideoId: "824222532"
+      },
+      {
+        date: `Kitbashing Identity – Nov. 23, 2020`,
+        time: "Monday, 23 November<br/>7:00pm EST",        
+        hasRecording: true,
+        twitchVideoId: "824222969"
+      },
+      {
+        date: `Virtual Currencies – Nov. 25, 2020`,
+        time: "Wednesday, 25 November<br/>9:00am EST",        
+        hasRecording: true,
+        twitchVideoId: "824223323"
+      },
+      {
+        date: `DIY Time – Nov. 25, 2020`,
+        time: "Wednesday, 25 November<br/>11:00am EST",        
+        hasRecording: true,
+        twitchVideoId: "824223818"
+      },
     ]
   }
 }

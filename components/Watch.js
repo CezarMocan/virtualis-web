@@ -41,8 +41,8 @@ class Main extends React.Component {
           <div className="watch-live-container">
             { TwitchEmbedVideo && <TwitchEmbedVideo
               autoplay
-              channel={watch.liveTwitchChannel}
-              //video="619925172"
+              // channel={watch.liveTwitchChannel}
+              video="824223818"
               height={streamWidth * 9 / 16}
               muted={false}
               allowfullscreen={true}
@@ -53,7 +53,9 @@ class Main extends React.Component {
             /> }
           </div>
 
-          <h1 className="centered">Schedule</h1>          
+          {/* <h1 className="centered">Schedule</h1> */}
+          { (watch.futureSessions.length > 0) && <h1 className="centered">Schedule</h1> }
+          {/* { (watch.futureSessions.length == 0) && <p className="large centered">There are no future tours scheduled at the moment.</p> } */}
           <div className="schedule-container">
             { watch.futureSessions.map(s => {
               return (

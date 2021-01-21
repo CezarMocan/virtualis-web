@@ -3,10 +3,9 @@ module.exports = {
     {
       title: 'How to Book a Tour',
       content: [
-        "Virtualis is presented as a part of IDFA DocLab's 2020 festival. Festival attendees will be able to book time on-site with a VR station in order to join the tour.",
-        "If you are a festival attendee and resident of Amsterdam you can book your tour through IDFA DocLab's registration portal.",
-        "Tours for online only participants will be an invite only affair with invited guests by IDFA DocLab's internal team. These guests will be sent registration info and will receive an appointment confirmation after registering.",
-        `After confirming your appointment we will send details on how to download VRChat and when and where to meet us. From there our knowledgeable Virtualis Tour Guides™ will guide you through an onboarding process in VRChat before beginning the tour.`
+        `Virtualis premiered as a part of <a href="https://www.idfa.nl/en/film/934a1588-e0f5-4340-8e1d-540fc65878a3/virtualis" target="_blank">IDFA DocLab's 2020</a> festival. Festival attendees were able to book time on-site with a VR station for their tours. Select folks were also invited to attend a tour remotely with their personal VR equipment.`,
+        "There are no tours currently scheduled.",
+        `If you are interested in a tour for yourself or your company, or would like to find out more about the project and chat with the creators send us an email at <a href="mailto:virtualis.tours@gmail.com">virtualis.tours@gmail.com</a> or join our <a href="https://discord.com/invite/kT8XHpbCAR" target="_blank">Discord</a> and message us there.`
       ],
       button: false
     },
@@ -14,7 +13,6 @@ module.exports = {
       title: 'Equipment Required',
       content: [
         "Online attendees will need either an Oculus Rift headset or a Vive headset and a VR capable computer. Oculus Quest users will need to use a Link Cable and PC. Due to limitations VRChat places on Oculus Quest users without the Link Cable, we will not be able to offer tours to these users. While VRChat does have a non-VR desktop mode we will not be accommodating those users as we feel VR is an essential part of the experience and topics covered in our tours.",
-        "If you have questions about whether your VR equipment is compatible please send us a message."
       ],
       button: false
     },
