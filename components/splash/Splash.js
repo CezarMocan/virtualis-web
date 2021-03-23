@@ -1,9 +1,7 @@
 import React from 'react'
-import { withMainContext } from '../context/MainContext'
-import Link from 'next/link'
-import LogoSVG from '../static/img/virtualis_logo_1.svg'
+import { withMainContext } from '../../context/MainContext'
 import LogoPNG from '../static/img/virtualis_logo_hires.png'
-import Bubbles from './BubblesManager'
+import Bubbles from '../BubblesManager'
 import classnames from 'classnames'
 
 class Main extends React.Component {

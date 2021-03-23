@@ -1,5 +1,5 @@
 import paper from 'paper'
-import { random, randomSgn } from '../modules/utils'
+import { random, randomSgn } from '../../modules/utils'
 
 const MAX_VELOCITY = 0.4
 const MIN_VELOCITY = 0.1

@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { withMainContext } from '../context/MainContext'
+import { withMainContext } from '../../context/MainContext'
 
 class WatchRecording extends React.Component {
   state = {

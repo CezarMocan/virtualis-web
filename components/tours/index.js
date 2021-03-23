@@ -1,9 +1,9 @@
 import React from 'react'
-import { withMainContext } from '../context/MainContext'
+import { withMainContext } from '../../context/MainContext'
 import classnames from 'classnames'
 import TourCard from './TourCard'
 import TourCardSmall from './TourCardSmall'
-import { tours, comingSoonTours } from '../content/tourPackages'
+import { tours, comingSoonTours } from '../../content/tourPackages'
 
 
 class Main extends React.Component {

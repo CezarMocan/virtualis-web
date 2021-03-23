@@ -5,14 +5,14 @@ const MainContext = React.createContext()
 
 export default class MainContextProvider extends React.Component {
     state = {
-        isMobile: null,
-        url: null,
-        hash: null,
-        router: null,
-        windowWidth: 1024,
-        windowHeight: 768,
-        loaded: false,  
-        action: this
+      isMobile: null,
+      url: null,
+      hash: null,
+      router: null,
+      windowWidth: 1024,
+      windowHeight: 768,
+      loaded: false,  
+      action: this
     }    
 
     componentDidUpdate(oldProps) {

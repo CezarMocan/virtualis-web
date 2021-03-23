@@ -1,5 +1,5 @@
 import paper from 'paper'
-import { random, easeOutElastic, easeOutCubic, valmap, clamp, sqDist } from '../modules/utils'
+import { random, easeOutElastic, easeOutCubic, valmap, clamp, sqDist } from '../../modules/utils'
 
 const HOVER_SCALE_TIME_S = 1
 const SCALE_HOVERED = 1.5
@@ -25,11 +25,7 @@ export default class Bubble {
     this.circle = new paper.Path.Circle(new paper.Point(x, y), r)
     this.renderCircle = this.circle.clone()
 
-    // this.circle.opacity = 0
-    // this.renderCircle.strokeColor = 'blue'
     this.renderCircle.strokeWidth = 1
-    // this.circle2 = new paper.Path.Circle(new paper.Point(30, 30), r / 2)
-    // this.circle = this.circle.unite(this.circle2)
     this.clipCircle = this.circle.clone()//new paper.Path.Circle(this.circle)    
 
     this.gradientStops = [
@@ -60,7 +56,6 @@ export default class Bubble {
     this.shape.onMouseDown = this.onMouseDown
     this.shape.onFrame = this.update
 
-    // this.acceleration = new paper.Point(random(-0.1, 0.1), random(-0.3, -0.1))
     this.acceleration = new paper.Point(random(-0.3, 0.3), random(-0.5, -0.3))
     this.velocity = new paper.Point(0, 0)
 
@@ -198,17 +193,6 @@ export default class Bubble {
         this.raster.opacity = clamp(eO, 0, 1)
       }
     }
-
-    // Update gradient
-    /*
-    if (this.shape.x && this.shape.y) {
-      this.fillColor = {
-        gradient: { stops: this.gradientStops },
-        origin: new paper.Point(this.shape.x + this.r, this.shape.y + this.r / 4),
-        destination: new paper.Point(this.shape.x - this.r, this.shape.y - this.r / 4)
-      }
-    }
-    */
   }
   remove() {
     this.shape.remove()
@@ -240,7 +224,6 @@ export default class Bubble {
       if (this.renderCircle.isInserted()) {
         this.renderCircle.remove()
         this.clipCircle = this.circle.clone({ insert: false })
-        // this.shape.addChild(this.circle)
         this.shape.removeChildren(0, 1)
         this.shape.addChild(this.clipCircle)
         this.shape.addChild(this.raster)

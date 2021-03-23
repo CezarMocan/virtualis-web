@@ -102,8 +102,6 @@ class Main extends React.Component {
     const r = this.interp(from[param].value.x, to[param].value.x, t)
     const g = this.interp(from[param].value.y, to[param].value.y, t)
     const b = this.interp(from[param].value.z, to[param].value.z, t)
-    // if (param == 'u_color1')
-      // console.log(param, t, from[param].value.x, to[param].value.x, r)
     this.uniforms[param].value.set(r, g, b)
   }
   animate = () => {
@@ -124,6 +122,7 @@ class Main extends React.Component {
     this.uniforms.u_point4.value.set(this.movement.p4.pos.x, this.movement.p4.pos.y)
     this.uniforms.u_point5.value.set(this.movement.p5.pos.x, this.movement.p5.pos.y)
 
+    // Gradient smooth transition when navigating between different pages on the site
     if (performance.now() - this.colorTransition.timeStart < 1000 * COLOR_TRANSITION_TIME_S) {
       const t = (performance.now() - this.colorTransition.timeStart) / (1000 * COLOR_TRANSITION_TIME_S)
       this.interpolateColor(this.colorTransition.from, this.colorTransition.to, 'u_color1', t)

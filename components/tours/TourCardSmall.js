@@ -1,5 +1,5 @@
 import React from 'react'
-import ShallowLink from './ShallowLink'
+import ShallowLink from '../ShallowLink'
 import ComingSoonImg from '../static/img/coming-soon.png'
 
 class TourCardSmall extends React.Component {

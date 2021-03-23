@@ -1,6 +1,6 @@
 import React from 'react'
-import { withMainContext } from '../context/MainContext'
-import { about } from '../content/about'
+import { withMainContext } from '../../context/MainContext'
+import { about } from '../../content/about'
 import classnames from 'classnames'
 
 class Main extends React.Component {

@@ -1,11 +1,10 @@
 import React from 'react'
 import paper from 'paper'
-import { withMainContext } from '../context/MainContext'
-import ShallowLink from './ShallowLink'
-import Logo from './Logo'
-import { book, testimonials } from '../content/book'
+import { withMainContext } from '../../context/MainContext'
+import ShallowLink from '../ShallowLink'
+import { book, testimonials } from '../../content/book'
 import TestimonialBubble from './TestimonialBubble'
-import { random } from '../modules/utils'
+import { random } from '../../modules/utils'
 import classnames from 'classnames'
 
 const MAX_BUBBLE_RADIUS = 0.25

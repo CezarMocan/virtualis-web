@@ -1,32 +1,32 @@
 import React from 'react'
-import { withMainContext } from '../context/MainContext'
+import { withMainContext } from '../../context/MainContext'
 import paper, { Point, Size } from 'paper'
-import { random, computeConnectedComponents, createAlignedText, updateAlignedText } from '../modules/utils'
+import { random, computeConnectedComponents, createAlignedText, updateAlignedText } from '../../modules/utils'
 import Bubble from './Bubble'
-import Image1 from '../static/img/splash/1.png'
-import Image2 from '../static/img/splash/2.png'
-import Image3 from '../static/img/splash/3.png'
-import Image4 from '../static/img/splash/4.png'
-import Image5 from '../static/img/splash/5.png'
-import Image6 from '../static/img/splash/6.png'
-import Image7 from '../static/img/splash/7.png'
-import Image8 from '../static/img/splash/8.png'
-import Image9 from '../static/img/splash/9.png'
-import Image10 from '../static/img/splash/10.png'
-import Image11 from '../static/img/splash/11.png'
-import Image12 from '../static/img/splash/12.png'
-import Image13 from '../static/img/splash/13.png'
-import Image14 from '../static/img/splash/14.png'
-import Image15 from '../static/img/splash/15.png'
-import Image16 from '../static/img/splash/16.png'
-import Image17 from '../static/img/splash/17.png'
-import Image18 from '../static/img/splash/18.png'
-import Image19 from '../static/img/splash/19.png'
-import Image20 from '../static/img/splash/20.png'
-import Image21 from '../static/img/splash/21.png'
-import Image22 from '../static/img/splash/22.png'
-import Image23 from '../static/img/splash/23.png'
-import Image24 from '../static/img/splash/24.png'
+import Image1 from '../../static/img/splash/1.png'
+import Image2 from '../../static/img/splash/2.png'
+import Image3 from '../../static/img/splash/3.png'
+import Image4 from '../../static/img/splash/4.png'
+import Image5 from '../../static/img/splash/5.png'
+import Image6 from '../../static/img/splash/6.png'
+import Image7 from '../../static/img/splash/7.png'
+import Image8 from '../../static/img/splash/8.png'
+import Image9 from '../../static/img/splash/9.png'
+import Image10 from '../../static/img/splash/10.png'
+import Image11 from '../../static/img/splash/11.png'
+import Image12 from '../../static/img/splash/12.png'
+import Image13 from '../../static/img/splash/13.png'
+import Image14 from '../../static/img/splash/14.png'
+import Image15 from '../../static/img/splash/15.png'
+import Image16 from '../../static/img/splash/16.png'
+import Image17 from '../../static/img/splash/17.png'
+import Image18 from '../../static/img/splash/18.png'
+import Image19 from '../../static/img/splash/19.png'
+import Image20 from '../../static/img/splash/20.png'
+import Image21 from '../../static/img/splash/21.png'
+import Image22 from '../../static/img/splash/22.png'
+import Image23 from '../../static/img/splash/23.png'
+import Image24 from '../../static/img/splash/24.png'
 
 
 const IMAGES = [Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20, Image21, Image22, Image23, Image24]
@@ -51,6 +51,7 @@ class Main extends React.Component {
   get width() { return window ? window.innerWidth : 100 }
   get height() { return window ? window.innerHeight : 100 }
 
+  // **** BUBBLE INITIALIZATION **** \\
   updateNextSpawnTime() {
     this.nextSpawnTime = performance.now() + 1000 * random(SPAWN_TIME_LOWER_BOUND_S, SPAWN_TIME_UPPER_BOUND_S)
   }
@@ -73,6 +74,29 @@ class Main extends React.Component {
     }
     this.updateNextSpawnTime()
   }  
+  // **** **** \\
+
+
+  // **** ROTATING TEXT FRAME INITIALIZATION **** \\
+  initializeText = () => {
+    const { isFirefox } = this.props
+    this.textInitialized = false
+    const padding = this.width > 500 ? 27 : 15
+    const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
+    const cornerSize = new paper.Size(25, 25);
+    this._frame = new paper.Path.Rectangle(rect, cornerSize)
+    this.textOffset = 0
+    const textRep = isFirefox ? 1 : TEXT_REPETITION
+    this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
+      fontSize: this.width > 500 ? 21 : 13, 
+      fillColor: 'white',
+      // fontWeight: 'bold',
+      fontFamily: this.width > 500 ? 'Graphik-Bold' : 'Graphik-Bold'
+    }, textRep)
+    this.textInitialized = true
+  }
+  // **** **** \\
+
   onBubbleMobileTap = (id) => {
     if (!this.props.isMobile) return
     this.bubbles.forEach(b => {
@@ -80,13 +104,11 @@ class Main extends React.Component {
       if (b.isHovered) b.contract()
     })
   }
-  setupCanvas = (c) => {
-    this._canvas = c
-  }
+
+  // **** PER FRAME DRAWING **** \\
   buildGraph(bubbles) {
     this.graph = []
     for (let i = 0; i < bubbles.length; i++) this.graph.push([])
-
     for (let i = 0; i < bubbles.length; i++) {
       for (let j = i + 1; j < bubbles.length; j++) {
         if (bubbles[i].intersects(bubbles[j])) {
@@ -95,10 +117,8 @@ class Main extends React.Component {
         }
       }
     }
-
     return this.graph
   }
-
   drawBubbles = (evt) => {
     // Remove dead bubbles
     this.bubbles.forEach(b => { if (b.isDead) b.remove() })
@@ -131,31 +151,11 @@ class Main extends React.Component {
       this.updateNextSpawnTime()
     }
   }
-
-  initializeText = () => {
-    const { isFirefox } = this.props
-    this.textInitialized = false
-    const padding = this.width > 500 ? 27 : 15
-    const rect = new paper.Rectangle(new Point(padding, padding), new paper.Size(this.width - 2 * padding, this.height - 2 * padding))
-    const cornerSize = new paper.Size(25, 25);
-    this._frame = new paper.Path.Rectangle(rect, cornerSize)
-    this.textOffset = 0
-    const textRep = isFirefox ? 1 : TEXT_REPETITION
-    this.textOnPath = createAlignedText("We are the #1 VRChat Tour Agency!", this._frame, { 
-      fontSize: this.width > 500 ? 21 : 13, 
-      fillColor: 'white',
-      // fontWeight: 'bold',
-      fontFamily: this.width > 500 ? 'Graphik-Bold' : 'Graphik-Bold'
-    }, textRep)
-    this.textInitialized = true
-  }
   drawText = () => {
     if (!this.textOnPath || !this.textInitialized) return
     this.textOffset += (TEXT_SPEED * this._frameTime / 16.0)
-    // this.textOffset += TEXT_SPEED
     updateAlignedText(this.textOnPath.glyphTexts, this.textOnPath.xOffsets, this._frame, this.textOffset, TEXT_SPEED)
   }
-
   draw = (evt) => {
     if (!this._frameCount) {
       this._frameCount = 0
@@ -171,6 +171,9 @@ class Main extends React.Component {
     if (this._frameCount % 2 != 0) return
     this.drawBubbles(evt)
   }
+  // **** **** \\
+
+  // **** REACT LIFECYCLE, REFS & EVENT LISTENERS **** \\
   onWindowResize = () => {
     if (this.lastResizeTimerId != null) {
       clearTimeout(this.lastResizeTimerId)
@@ -183,6 +186,9 @@ class Main extends React.Component {
         this.lastResizeTimerId = setTimeout(() => { this.initializeText(); this.lastResizeTimerId = null; }, 500)
       }  
     }
+  }  
+  setupCanvas = (c) => {
+    this._canvas = c
   }
   componentDidMount() {
     if (paper.projects.length > 0) paper.projects.forEach(p => p.remove())
@@ -196,6 +202,8 @@ class Main extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.onWindowResize)
   }
+  // ****  **** \\
+
   render() {
     return (
       <div className="splash-bubbles">

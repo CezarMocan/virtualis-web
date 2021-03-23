@@ -1,5 +1,5 @@
 import React from 'react'
-import ShallowLink from './ShallowLink'
+import ShallowLink from '../ShallowLink'
 
 class TourCard extends React.Component {
   render() {

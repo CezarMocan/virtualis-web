@@ -1,6 +1,6 @@
 import React from 'react'
-import { withMainContext } from '../context/MainContext'
-import { watch } from '../content/watch'
+import { withMainContext } from '../../context/MainContext'
+import { watch } from '../../content/watch'
 import WatchRecording from './WatchRecording'
 import classnames from 'classnames'
 
