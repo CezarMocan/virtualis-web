@@ -65,6 +65,7 @@ export const clearCaches = () => {
   PATH_TANGENT_CACHE = {}
 }
 
+// Found online and adapted
 export const createAlignedText = (str, path, style, reps = 20) => {
   clearCaches()
   if (str && str.length > 0 && path) {
