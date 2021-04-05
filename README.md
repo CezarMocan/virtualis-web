@@ -1,6 +1,7 @@
 ## Virtualis
 
-A presentation website for Virtualis: a (fictional) VRChat tour agency created by Matt Romein and Lydia Jessup as part of the International Documentary Film Festival of Amsterdam (IDFA.) 
+A presentation website for Virtualis: a (fictional) VRChat tour agency created by Matt Romein and Lydia Jessup as part of the International Documentary Film Festival of Amsterdam ([IDFA](https://www.idfa.nl/en/film/934a1588-e0f5-4340-8e1d-540fc65878a3/virtualis?&collectionType=idfa)) 2020.
+
 More information and context can be found in my [portfolio](http://cezar.io/virtualis), or on the [Virtualis](https://virtualis.tours) website.
 
 ![Virtualis](http://cezar.io/assets/images/virtualis/1.png)
